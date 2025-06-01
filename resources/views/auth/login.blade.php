@@ -1,47 +1,93 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Softnio">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ asset('backend/images/favicon.png') }}">
+    <title>Login Page  </title>
+    <link rel="stylesheet" href="{{ asset('backend/assets/css/style.css?v1.0.0') }}">
+</head>
+
+<body class="nk-body ">
+    <div class="nk-app-root " data-sidebar-collapse="lg">
+        <div class="nk-main">
+            <div class="nk-wrap has-shape flex-column">
+                <div class="nk-shape bg-shape-blur-a start-0 top-0"></div>
+                <div class="nk-shape bg-shape-blur-b end-0 bottom-0"></div>
+                <div class="text-center pt-5">
+                    <a href="index.html" class="logo-link">
+    <div class="logo-wrap">
+        <img class="logo-img logo-light" src="{{ asset('backend/images/logo.png') }}" srcset="{{ asset('backend/images/logo2x.png 2x') }}" alt="">
+        
+        <img class="logo-img logo-dark" src="{{ asset('backend/images/logo-dark.png') }}" srcset="{{ asset('backend/images/logo-dark2x.png 2x') }}" alt="">
+
+        <img class="logo-img logo-icon" src="{{ asset('backend/images/logo-icon.png') }}" srcset="{{ asset('backend/images/logo-icon2x.png 2x') }}" alt="">
+    </div>
+                    </a>
+                </div>
+<div class="container p-2 p-sm-4 mt-auto">
+    <div class="row justify-content-center">
+        <div class="col-md-7 col-lg-5 col-xl-5 col-xxl-4">
+            <div class="nk-block">
+                <div class="nk-block-head text-center mb-4 pb-2">
+                    <div class="nk-block-head-content">
+                        <h1 class="nk-block-title mb-1">Log into Your Account</h1>
+                        <p class="small">Sign in to your account to customize your content generation settings and view your history.</p>
+                    </div>
+                </div>
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
+        <div class="row gy-3">
+            <div class="col-12">
+                <div class="form-group">
+                    <label class="form-label" for="email">Email Address</label>
+                    <div class="form-control-wrap">
+                        <input class="form-control" type="email" id="email" name="email" placeholder="Enter email address" />
+                    </div>
+                </div><!-- .form-group -->
+            </div>
+            <div class="col-12">
+                <div class="form-group">
+                    <label class="form-label" for="password">Password</label>
+                    <div class="form-control-wrap">
+                        <a href="password" class="password-toggle form-control-icon end" title="Toggle show/hide password">
+                            <em class="icon ni ni-eye inactive"></em>
+                            <em class="icon ni ni-eye-off active"></em>
+                        </a>
+                        <input class="form-control" type="password" id="password" name="password" placeholder="Enter password" />
+                    </div>
+                </div><!-- .form-group -->
+            </div>
+            <div class="col-12">
+                <a class="link small" href="{{ route('password.request') }}">Forgot password?</a>
+            </div>
+            <div class="col-12">
+                <div class="d-grid">
+                    <button class="btn btn-primary" type="submit">Login</button>
+                </div>
+            </div>
         </div>
     </form>
-</x-guest-layout>
+                <div class="text-center mt-3">
+                    <p class="small">Don’t have an account? <a href="{{ route('register') }}">Sign up</a></p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+     @include('admin.body.footer') 
+
+            </div>
+        </div>
+    </div>
+    <script src="{{ asset('backend/assets/js/bundle.js?v1.0.0') }}"></script>
+    <script src="{{ asset('backend/assets/js/scripts.js?v1.0.0') }}"></script>
+</body>
+
+</html>
