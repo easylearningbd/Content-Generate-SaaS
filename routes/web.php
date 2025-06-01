@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\IsAdmin;
 use App\Http\Middleware\IsUser;
+use App\Http\Controllers\Backend\Admin\AdminController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,6 +28,12 @@ Route::prefix('admin')->middleware(['auth', IsAdmin::class])->group(function () 
 Route::get('/dashboard', function () {
     return view('admin.index');
 })->name('admin.dashboard');
+
+
+ Route::get('/admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');
+
+
+
 
 });
 /// Eend User Routes 

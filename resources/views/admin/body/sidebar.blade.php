@@ -106,164 +106,17 @@
                 </a>
             </li>
             <li class="nk-menu-item">
-                <a href="payment.html" target="_blank" class="nk-menu-link">
+                <a href="{{ route('admin.logout') }}" class="nk-menu-link">
                     <span class="nk-menu-icon">
                         <em class="icon ni ni-wallet"></em>
                     </span>
-                    <span class="nk-menu-text">Payments</span>
+                    <span class="nk-menu-text">Logout</span>
                 </a>
             </li>
-            <li class="nk-menu-item has-sub">
-                <a href="#" class="nk-menu-link nk-menu-toggle">
-                    <span class="nk-menu-icon">
-                        <em class="icon ni ni-signin"></em>
-                    </span>
-                    <span class="nk-menu-text">Auth Pages</span>
-                </a>
-                <ul class="nk-menu-sub">
-                    <li class="nk-menu-item">
-                        <a href="login.html" target="_blank" class="nk-menu-link">
-                            <span class="nk-menu-text">Login</span>
-                        </a>
-                    </li>
-                    <li class="nk-menu-item">
-                        <a href="create-account.html" target="_blank" class="nk-menu-link">
-                            <span class="nk-menu-text">Register</span>
-                        </a>
-                    </li>
-                    <li class="nk-menu-item">
-                        <a href="forgot-password.html" target="_blank" class="nk-menu-link">
-                            <span class="nk-menu-text">Forgot Password</span>
-                        </a>
-                    </li>
-                    <li class="nk-menu-item">
-                        <a href="check-email.html" target="_blank" class="nk-menu-link">
-                            <span class="nk-menu-text">Check Email</span>
-                        </a>
-                    </li>
-                    <li class="nk-menu-item">
-                        <a href="verify-email.html" target="_blank" class="nk-menu-link">
-                            <span class="nk-menu-text">Verify Email</span>
-                        </a>
-                    </li>
-                    <li class="nk-menu-item">
-                        <a href="email-verified.html" target="_blank" class="nk-menu-link">
-                            <span class="nk-menu-text">Email Verified</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nk-menu-heading">
-                <h6 class="overline-title">Components</h6>
-            </li>
-            <li class="nk-menu-item">
-                <a href="component-buttons.html" class="nk-menu-link">
-                    <span class="nk-menu-icon is-alt">
-                        <em class="icon ni ni-view-grid-wd"></em>
-                    </span>
-                    <span class="nk-menu-text">Buttons</span>
-                </a>
-            </li>
-            <li class="nk-menu-item">
-                <a href="component-badges.html" class="nk-menu-link">
-                    <span class="nk-menu-icon is-alt">
-                        <em class="icon ni ni-ticket"></em>
-                    </span>
-                    <span class="nk-menu-text">Badges</span>
-                </a>
-            </li>
-            <li class="nk-menu-item">
-                <a href="component-alert.html" class="nk-menu-link">
-                    <span class="nk-menu-icon is-alt">
-                        <em class="icon ni ni-alert"></em>
-                    </span>
-                    <span class="nk-menu-text">Alert</span>
-                </a>
-            </li>
-            <li class="nk-menu-item">
-                <a href="component-dropdown.html" class="nk-menu-link">
-                    <span class="nk-menu-icon is-alt">
-                        <em class="icon ni ni-notify"></em>
-                    </span>
-                    <span class="nk-menu-text">Dropdown</span>
-                </a>
-            </li>
-            <li class="nk-menu-item has-sub">
-                <a href="#" class="nk-menu-link nk-menu-toggle">
-                    <span class="nk-menu-icon is-alt">
-                        <em class="icon ni ni-todo"></em>
-                    </span>
-                    <span class="nk-menu-text">Forms</span>
-                </a>
-                <ul class="nk-menu-sub">
-                    <li class="nk-menu-item">
-                        <a href="component-form-basic.html" class="nk-menu-link">
-                            <span class="nk-menu-text">Form Basic</span>
-                        </a>
-                    </li>
-                    <li class="nk-menu-item">
-                        <a href="component-form-advanced.html" class="nk-menu-link">
-                            <span class="nk-menu-text">Form Advanced</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nk-menu-item">
-                <a href="component-tabs.html" class="nk-menu-link">
-                    <span class="nk-menu-icon is-alt">
-                        <em class="icon ni ni-browser"></em>
-                    </span>
-                    <span class="nk-menu-text">Tabs</span>
-                </a>
-            </li>
-            <li class="nk-menu-item">
-                <a href="component-modals.html" class="nk-menu-link">
-                    <span class="nk-menu-icon is-alt">
-                        <em class="icon ni ni-property"></em>
-                    </span>
-                    <span class="nk-menu-text">Modal</span>
-                </a>
-            </li>
-            <li class="nk-menu-item">
-                <a href="component-popover-tooltip.html" class="nk-menu-link">
-                    <span class="nk-menu-icon is-alt">
-                        <em class="icon ni ni-chat"></em>
-                    </span>
-                    <span class="nk-menu-text">Popover &amp; Tooltips</span>
-                </a>
-            </li>
-            <li class="nk-menu-item">
-                <a href="component-accordion.html" class="nk-menu-link">
-                    <span class="nk-menu-icon is-alt">
-                        <em class="icon ni ni-view-x7"></em>
-                    </span>
-                    <span class="nk-menu-text">Accordion</span>
-                </a>
-            </li>
-            <li class="nk-menu-item">
-                <a href="component-card.html" class="nk-menu-link">
-                    <span class="nk-menu-icon is-alt">
-                        <em class="icon ni ni-card-view"></em>
-                    </span>
-                    <span class="nk-menu-text">Card</span>
-                </a>
-            </li>
-            <li class="nk-menu-item">
-                <a href="component-offcanvas.html" class="nk-menu-link">
-                    <span class="nk-menu-icon is-alt">
-                        <em class="icon ni ni-layout-alt"></em>
-                    </span>
-                    <span class="nk-menu-text">Offcanvas</span>
-                </a>
-            </li>
-            <li class="nk-menu-item">
-                <a href="component-toasts.html" class="nk-menu-link">
-                    <span class="nk-menu-icon is-alt">
-                        <em class="icon ni ni-block-over"></em>
-                    </span>
-                    <span class="nk-menu-text">Toasts</span>
-                </a>
-            </li>
+          
+            
+            
+             
         </ul>
     </div><!-- .nk-sidebar-menu -->
 </div><!-- .nk-sidebar-content -->
