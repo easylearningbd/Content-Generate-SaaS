@@ -33,17 +33,17 @@
                     <span class="nk-menu-icon">
                         <em class="icon ni ni-folder-list"></em>
                     </span>
-                    <span class="nk-menu-text">Documents</span>
+                    <span class="nk-menu-text">Account</span>
                 </a>
                 <ul class="nk-menu-sub">
                     <li class="nk-menu-item">
-                        <a href="document-saved.html" class="nk-menu-link">
-                            <span class="nk-menu-text">Saved</span>
+                        <a href="{{ route('admin.profile') }}" class="nk-menu-link">
+                            <span class="nk-menu-text">Profile</span>
                         </a>
                     </li>
                     <li class="nk-menu-item">
                         <a href="document-drafts.html" class="nk-menu-link">
-                            <span class="nk-menu-text">Drafts</span>
+                            <span class="nk-menu-text">Change Password</span>
                         </a>
                     </li>
                 </ul>
