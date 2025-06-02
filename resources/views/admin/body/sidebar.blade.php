@@ -42,7 +42,7 @@
                         </a>
                     </li>
                     <li class="nk-menu-item">
-                        <a href="document-drafts.html" class="nk-menu-link">
+                        <a href="{{ route('admin.change.password') }}" class="nk-menu-link">
                             <span class="nk-menu-text">Change Password</span>
                         </a>
                     </li>
