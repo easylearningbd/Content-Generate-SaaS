@@ -21,7 +21,9 @@
         <div class="card shadown-none">
             <div class="card-body">
      
-     <form action="">          
+     <form action="{{ route('admin.profile.store') }}" method="post" enctype="multipart/form-data">
+        @csrf   
+
      <div class="row g-3 gx-gs">
                     
     <div class="col-md-6">
