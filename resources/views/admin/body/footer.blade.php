@@ -20,7 +20,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="nk-footer-copyright fs-6 px-3"> &copy; 2023 All Rights Reserved to <a href="#">Easylarningbd.com</a>. </div>
+            <div class="nk-footer-copyright fs-6 px-3"> &copy; 2023 All Rights Reserved to <a href="#">Easylearningbd.com</a>. </div>
         </div>
     </div>
 </div>

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\IsAdmin;
 use App\Http\Middleware\IsUser;
 use App\Http\Controllers\Backend\Admin\AdminController;
+use App\Http\Controllers\Backend\Admin\PlanController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -39,9 +40,16 @@ Route::get('/dashboard', function () {
 
 
 
+  Route::controller(PlanController::class)->group(function(){
+    Route::get('/all/plans', 'AllPlans')->name('all.plans'); 
+  });
+
+
+  
+
 
 });
-/// Eend Admin Routes 
+/// End Admin Routes 
  
 
 Route::middleware('auth')->group(function () {
