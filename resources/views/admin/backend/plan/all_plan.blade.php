@@ -11,7 +11,7 @@
             </div>
             <div class="nk-block-head-content">
                 <ul class="nk-block-tools">
-                    <li><a class="btn btn-primary" href="#"><em class="icon ni ni-plus"></em><span>Add Plans</span></a></li>
+                    <li><a class="btn btn-primary" href="{{ route('add.plans') }}"><em class="icon ni ni-plus"></em><span>Add Plans</span></a></li>
                 </ul>
             </div>
         </div>
@@ -57,10 +57,10 @@
                 <div class="fs-6 text-light d-inline-flex flex-wrap gap gx-2"> {{ $item->name }} </div>
             </td>
             <td class="tb-col tb-col-sm">
-                <div class="fs-6 text-light">{{ $item->monthly_word_limit }}</div>
+                <div class="fs-6 text-light">{{ $item->monthly_word_limit }} / Per Month</div>
             </td>
             <td class="tb-col tb-col-sm">
-                <div class="badge text-bg-success-soft rounded-pill px-2 py-1 fs-6 lh-sm">{{ $item->price }}</div>
+                <div class="badge text-bg-success-soft rounded-pill px-2 py-1 fs-6 lh-sm">${{ $item->price }}</div>
             </td>
 
             <td class="tb-col tb-col-sm">

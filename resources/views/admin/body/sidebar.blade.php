@@ -64,7 +64,7 @@
                         </a>
                     </li>
                     <li class="nk-menu-item">
-                        <a href="{{ route('admin.change.password') }}" class="nk-menu-link">
+                        <a href="{{ route('add.plans') }}" class="nk-menu-link">
                             <span class="nk-menu-text">Add Plans</span>
                         </a>
                     </li>
