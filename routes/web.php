@@ -6,6 +6,7 @@ use App\Http\Middleware\IsAdmin;
 use App\Http\Middleware\IsUser;
 use App\Http\Controllers\Backend\Admin\AdminController;
 use App\Http\Controllers\Backend\Admin\PlanController;
+use App\Http\Controllers\Backend\Admin\TemplateController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -47,6 +48,12 @@ Route::get('/dashboard', function () {
     Route::get('/edit/plans/{id}', 'EditPlans')->name('edit.plans'); 
     Route::post('/update/plans', 'UpdatePlans')->name('update.plans');
     Route::get('/delete/plans/{id}', 'DeletePlans')->name('delete.plans'); 
+  });
+
+
+    Route::controller(TemplateController::class)->group(function(){
+    Route::get('/admin/template', 'AdminTemplate')->name('admin.template'); 
+    
   });
 
 
