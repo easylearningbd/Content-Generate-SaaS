@@ -44,6 +44,8 @@ Route::get('/dashboard', function () {
     Route::get('/all/plans', 'AllPlans')->name('all.plans'); 
     Route::get('/add/plans', 'AddPlans')->name('add.plans'); 
     Route::post('/store/plans', 'StorePlans')->name('store.plans'); 
+    Route::get('/edit/plans/{id}', 'EditPlans')->name('edit.plans'); 
+    Route::post('/update/plans', 'UpdatePlans')->name('update.plans');
   });
 
 

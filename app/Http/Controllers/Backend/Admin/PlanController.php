@@ -39,6 +39,35 @@ class PlanController extends Controller
     }
     // End Method 
 
+    public function EditPlans($id){
+
+       $plans = Plan::find($id);
+       return view('admin.backend.plan.edit_plan',compact('plans'));
+
+    }
+     // End Method 
+
+     public function UpdatePlans(Request $request){
+
+        $plan_id = $request->id;
+       
+        Plan::find($plan_id)->update([
+            'name' => $request->name,
+            'monthly_word_limit' => $request->monthly_word_limit,
+            'price' => $request->price,
+            'templates' => $request->templates,
+        ]);
+
+        $notification = array(
+        'message' => 'Plans Updated Successfully',
+        'alert-type' => 'success'
+     );
+
+     return redirect()->route('all.plans')->with($notification);
+
+    }
+    // End Method 
+
 
 
 }
