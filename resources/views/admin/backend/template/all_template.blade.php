@@ -11,14 +11,17 @@
             <div class="nk-block-head-content">
                 <div class="d-flex gap gx-4">
                     <div class="">
-                        <ul class="d-flex gap gx-2">
-                            <li>
-                                <a href="templates-list.html" class="btn btn-md btn-icon btn-outline-light"><em class="icon ni ni-view-list-wd"></em></a>
-                            </li>
-                            <li>
-                                <a href="templates.html" class="btn btn-md btn-icon btn-primary btn-soft"><em class="icon ni ni-grid-fill"></em></a>
-                            </li>
-                        </ul>
+    <ul class="d-flex gap gx-2">
+            <li>
+            <a href="{{ route('add.template') }}" class="btn btn-primary">Add Template </a>
+        </li>
+        <li>
+            <a href="templates-list.html" class="btn btn-md btn-icon btn-outline-light"><em class="icon ni ni-view-list-wd"></em></a>
+        </li>
+        <li>
+            <a href="templates.html" class="btn btn-md btn-icon btn-primary btn-soft"><em class="icon ni ni-grid-fill"></em></a>
+        </li>
+    </ul>
                     </div>
                     <div class="">
                         <div class="form-control-wrap">
