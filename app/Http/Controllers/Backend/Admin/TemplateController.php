@@ -78,5 +78,57 @@ class TemplateController extends Controller
       //End Method 
 
 
+      public function UpdateTemplate(Request $request, $id){
+
+        /// Validate the request data 
+        $validateData = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'category' => 'required|string',
+
+            'icon' => 'required|string',
+            'prompt' => 'required|string',
+            'is_active' => 'required|in:0,1',
+
+            'input_fields' => 'required|array|size:1',
+            'input_fields.*.title' => 'required|string|max:255',
+            'input_fields.*.description' => 'required|string',
+            'input_fields.*.type' => 'required|in:text,textarea',  
+        ]);
+
+    // Create the template 
+    $template = Template::findOrFail($id);
+    $template->title = $validateData['title']; 
+    $template->description = $validateData['description'];
+    $template->category = $validateData['category'];
+    $template->icon = $validateData['icon'];
+    $template->prompt = $validateData['prompt'];
+    $template->is_active = $validateData['is_active']; 
+    $template->save();
+
+    // Save data in Input Filed table 
+    $inputField = $validateData['input_fields'][0];
+     
+    $templateInputField = TemplateInputFields::where('template_id',$template->id)->first();
+
+    if ($templateInputField ) {
+       $templateInputField->title = $inputField['title'];
+       $templateInputField->description = $inputField['description']; 
+       $templateInputField->type = $inputField['type']; 
+       $templateInputField->is_required = true;
+       $templateInputField->order = 0;
+       $templateInputField->save();
+    } 
+
+    $notification = array(
+        'message' => 'Template Updated Successfully',
+        'alert-type' => 'success'
+     );
+
+     return redirect()->route('admin.template')->with($notification); 
+    }
+    //End Method 
+
+
 
 }
