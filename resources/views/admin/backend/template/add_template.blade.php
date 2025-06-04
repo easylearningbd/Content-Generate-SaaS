@@ -21,8 +21,8 @@
         <div class="card shadown-none">
             <div class="card-body">
      
-     <form action="{{ route('store.plans') }}" method="post" enctype="multipart/form-data">
-        @csrf   
+   <form action="{{ route('store.template') }}" method="post" enctype="multipart/form-data">
+     @csrf   
 
      <div class="row g-3 gx-gs">
                     
@@ -135,7 +135,7 @@
 
     <div class="form-group mt-2">
         <label for="prompt">Custom Prompt</label>
-        <textarea placeholder="Add Your Prompt Code" class="form-control"  rows="3"></textarea>
+        <textarea name="prompt" placeholder="Add Your Prompt Code" class="form-control"  rows="3"></textarea>
         <small>Write a 400 world aticale about {topic} with an introductions</small> 
     </div>
 

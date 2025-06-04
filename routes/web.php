@@ -54,6 +54,7 @@ Route::get('/dashboard', function () {
     Route::controller(TemplateController::class)->group(function(){
     Route::get('/admin/template', 'AdminTemplate')->name('admin.template'); 
     Route::get('/add/template', 'AddTemplate')->name('add.template'); 
+    Route::post('/store/template', 'StoreTemplate')->name('store.template');
     
   });
 
