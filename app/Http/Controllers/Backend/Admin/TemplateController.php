@@ -51,6 +51,23 @@ class TemplateController extends Controller
     $template->created_by = Auth::id();
     $template->save();
 
+    // Save data in Input Filed table 
+    $inputField = $validateData['input_fields'][0];
+    TemplateInputFields::create([
+        'template_id' => $template->id,
+        'title' => $inputField['title'],
+        'description' => $inputField['description'],
+        'type' => $inputField['type'],
+        'is_required' => true,
+        'order' => 0,   
+    ]);
+
+    $notification = array(
+        'message' => 'Template Created Successfully',
+        'alert-type' => 'success'
+     );
+
+     return redirect()->route('admin.template')->with($notification); 
     }
     //End Method 
 
