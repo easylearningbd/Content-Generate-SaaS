@@ -57,7 +57,7 @@
         <option value="Ecommerce">Ecommerce</option>
         <option value="Website">Website</option>
         <option value="Social Media">Social Media</option>
-        <option value="Marketing3">Marketing</option>
+        <option value="Marketing">Marketing</option>
         <option value="Emails">Emails</option>
     </select>
             </div>
