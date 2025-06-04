@@ -71,6 +71,12 @@ class TemplateController extends Controller
     }
     //End Method 
 
+    public function EditTemplate($id){
+        $template = Template::with('inputFields')->findOrFail($id);
+        return view('admin.backend.template.edit_template',compact('template'));
+    }
+      //End Method 
+
 
 
 }

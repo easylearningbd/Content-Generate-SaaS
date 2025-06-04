@@ -46,8 +46,11 @@
                 <div class="media media-rg media-middle media-circle text-primary bg-primary bg-opacity-20 mb-3">
                     <em class="{{ $item->icon }}"></em>
                 </div>
+             <a href="{{ route('edit.template',$item->id) }}">
                 <h5 class="fs-4 fw-medium">{{ $item->title }}</h5>
                 <p class="small text-light line-clamp-2">{{ $item->description }}</p>
+                </a>
+
             </div>
         </div><!-- .card -->
     </div><!-- .col -->
