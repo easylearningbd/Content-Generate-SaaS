@@ -58,6 +58,8 @@ Route::get('/dashboard', function () {
 
     Route::get('/edit/template/{id}', 'EditTemplate')->name('edit.template'); 
     Route::post('/update/template/{id}', 'UpdateTemplate')->name('update.template'); 
+
+    Route::get('/details/template/{id}', 'DetailsTemplate')->name('details.template');
     
   });
 

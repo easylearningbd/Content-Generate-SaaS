@@ -130,5 +130,13 @@ class TemplateController extends Controller
     //End Method 
 
 
+    public function DetailsTemplate($id){
+        $template = Template::with('inputFields')->findOrFail($id);
+        $user = Auth::user();
+        return view('admin.backend.template.details_template',compact('template','user')); 
+    }
+     //End Method 
+
+
 
 }

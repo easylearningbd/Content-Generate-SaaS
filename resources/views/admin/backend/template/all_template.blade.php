@@ -43,9 +43,12 @@
     <div class="col-sm-6 col-xxl-3 filter-item blog-content" data-category="blog-content">
         <div class="card card-full shadow-none">
             <div class="card-body">
+                <a href="{{ route('details.template',$item->id) }}">
                 <div class="media media-rg media-middle media-circle text-primary bg-primary bg-opacity-20 mb-3">
                     <em class="{{ $item->icon }}"></em>
                 </div>
+                 </a>
+
              <a href="{{ route('edit.template',$item->id) }}">
                 <h5 class="fs-4 fw-medium">{{ $item->title }}</h5>
                 <p class="small text-light line-clamp-2">{{ $item->description }}</p>
