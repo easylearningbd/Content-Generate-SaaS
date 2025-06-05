@@ -1,6 +1,12 @@
 @extends('admin.dashboard')
 @section('admin')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<style>
+    .nk-editor {
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+    }
+</style>
 
 <div class="nk-content-inner">
 <div class="nk-content-body">
@@ -80,15 +86,79 @@
      
 
  </form>
+   </div>
+     {{-- End Left Sidebar  --}}
 
 
-            </div>
-                {{-- End Left Sidebar  --}}
-
-            </div>
-
+ {{-- Right Sidebar  --}}
+    <div class="col-md-8">
+<div class="nk-editor">
+<div class="nk-editor-header">
+    <div class="nk-editor-title">
+        <h4 class="me-3 mb-0 line-clamp-1">{{ $template->title  }}</h4>
+        <ul class="d-inline-flex align-item-center">
+             
+            <li>
+                <button class="btn btn-sm btn-icon btn-zoom">
+                    <em class="icon ni ni-star"></em>
+                </button>
+            </li>
+           
+        </ul>
+    </div>
+    <div class="nk-editor-tools d-none d-xl-flex">
+        <ul class="d-inline-flex gap gx-3 gx-lg-4 pe-4 pe-lg-5">
+            <li>
+ <span class="sub-text text-nowrap">Words <span class="text-dark" id="word-count">0</span></span>
+            </li>
+            <li>
+                <span class="sub-text text-nowrap">Characters <span class="text-dark" id="char-count" >0</span></span>
+            </li>
+        </ul>
+        <ul class="d-inline-flex gap gx-3">
+            <li>
+                <div class="dropdown">
+                    <button class="btn btn-md btn-light rounded-pill" type="button" data-bs-toggle="dropdown">
+                        <span>Export</span>
+                        <em class="icon ni ni-chevron-down"></em>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end">
+                        <div class="dropdown-content">
+    <ul class="link-list link-list-hover-bg-primary link-list-md">
+        <li>
+            <a href="#" id="copy-text"><em class="icon ni ni-file-doc"></em><span>Copy Text</span></a>
+        </li>
+        <li>
+            <a href="#"><em class="icon ni ni-file-text"></em><span>Text</span></a>
+        </li>
+    </ul>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <button class="btn btn-md btn-primary rounded-pill" type="button"> Save </button>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="nk-editor-main">
+     
+    <div class="nk-editor-body">
+        <div class="wide-md h-100">
+            <div class="js-editor nk-editor-style-clean nk-editor-full" data-menubar="false" id="editor-v1"></div> <!-- .js-editor -->
         </div>
+    </div><!-- .nk-editor-body -->
+</div><!-- .nk-editor-main -->
+</div>
 
+
+         
+    </div>
+  {{-- End Right Sidebar  --}}
+
+            </div> 
+        </div> 
     </div>
 
  
