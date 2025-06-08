@@ -137,6 +137,11 @@ class TemplateController extends Controller
     }
      //End Method 
 
+    public function AdminContentGenerate(Request $request, $id){
+
+    }
+      //End Method 
+
 
 
 }

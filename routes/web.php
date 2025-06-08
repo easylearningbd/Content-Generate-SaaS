@@ -60,6 +60,10 @@ Route::get('/dashboard', function () {
     Route::post('/update/template/{id}', 'UpdateTemplate')->name('update.template'); 
 
     Route::get('/details/template/{id}', 'DetailsTemplate')->name('details.template');
+
+    Route::post('/content/generate/{id}', 'AdminContentGenerate')->name('content.generate');
+
+
     
   });
 

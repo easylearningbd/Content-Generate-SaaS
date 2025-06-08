@@ -29,8 +29,9 @@
                     <p><strong>Your Blanace Is {{ $user->current_word_usage - $user->words_used }} Words Left </strong></p> 
                 </div>
 
- <form action="{{ route('store.template') }}" method="post" enctype="multipart/form-data">
+ <form id="generateForm" action="{{ route('content.generate',$template->id) }}" method="post" enctype="multipart/form-data">
      @csrf  
+
     <div class="form-group">
         <label for="language" class="form-label">Language  </label>
             <div class="form-control-wrap">
@@ -146,7 +147,9 @@
      
     <div class="nk-editor-body">
         <div class="wide-md h-100">
-            <div class="js-editor nk-editor-style-clean nk-editor-full" data-menubar="false" id="editor-v1"></div> <!-- .js-editor -->
+            <div class="js-editor nk-editor-style-clean nk-editor-full" data-menubar="false" id="editor-v2">
+                <div id="editor-v1">  </div>
+                </div> <!-- .js-editor -->
         </div>
     </div><!-- .nk-editor-body -->
 </div><!-- .nk-editor-main -->
@@ -165,5 +168,82 @@
 
 </div>
 </div> 
+
+<script>
+// Handle form submission with AJAX
+document.getElementById('generateForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent default form submission
+
+    const form = this;
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'Accept': 'application/json',
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Response Data:', data); // Debug
+        if (data.success) {
+            const editor = document.getElementById('editor-v1');
+            if (editor) {
+                const formattedContent = formatContent(data.output, formData);
+                editor.innerHTML = formattedContent; // Set formatted HTML
+                updateCounts(); // Update word and character count
+            } else {
+                console.error('Editor element not found');
+            }
+        } else {
+            alert(data.message || 'Failed to generate content.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred while generating content.');
+    });
+});
+
+// Function to update word and character count
+function updateCounts() {
+    const editor = document.getElementById('editor-v1');
+    if (editor) {
+        const content = editor.textContent || editor.innerText;
+        const words = content.trim() === '' ? 0 : content.trim().split(/\s+/).length;
+        const characters = content.length;
+        document.getElementById('word-count').textContent = words;
+        document.getElementById('char-count').textContent = characters;
+    }
+}  
+
+// Function to format content professionally
+function formatContent(output, formData) {
+    let title = 'Generated Content';
+    for (let [key, value] of formData.entries()) {
+        if (key === 'Article_Title' || key === 'Topic') {
+            title = value;
+            break;
+        }
+    }
+
+    const lines = output.split('\n').filter(line => line.trim() !== '');
+
+    let html = `<h2>${title}</h2>`; 
+
+    const contentLines = lines.slice(3);
+    for (let i = 0; i < contentLines.length; i++) {
+        html += `<p>${contentLines[i]}</p>`;
+        if ((i + 1) % 3 === 0 && i + 1 < contentLines.length) {
+            html += '<hr>';
+        }
+    }
+
+    return html;
+}
+ 
+</script>
 
 @endsection
