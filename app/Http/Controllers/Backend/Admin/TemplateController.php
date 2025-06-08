@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Template;
 use App\Models\TemplateInputFields;
 use App\Models\GeneratedContent;
+use OpenAI\Laravel\Facades\OpenAI;
 
 class TemplateController extends Controller
 {
@@ -177,7 +178,45 @@ class TemplateController extends Controller
     $prompt = str_replace('{result_length}', $validateData['result_length'], $prompt);
 
 
+    $prompt = "In {$validateData['language']}, {$prompt} Aim for approximately {$validateData['result_length']} words.";
 
+    \Log::info('Final Prompt', ['prompt' => $prompt]);
+
+    /// Check word limit
+
+    $estimatedWordCount = $validateData['result_length'];
+    if ($user->words_used + $estimatedWordCount > $user->current_word_usage) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Word limit exceeded',
+        ],400);
+    }
+
+    try {
+        //Generate content with OpenAI
+
+        $response = OpenAI::chat()->create([
+            'model'=> $validateData['ai_model'],
+            'messages' => [
+                ['role' => 'user', 'content' => $prompt],
+            ],
+        ]);
+
+        $output = $response->choices[0]->message->content;
+        $wordCount = str_word_count($output);
+
+        /// Update user word usage
+        $user->words_used += $wordCount;
+        $user->save();
+
+        // SAVE DATA TO GENERATED CONTENT TABLE 
+
+
+
+
+    } catch (\Throwable $th) {
+        //throw $th;
+    }
 
 
 
