@@ -122,20 +122,16 @@
                     <button class="btn btn-md btn-light rounded-pill" type="button" data-bs-toggle="dropdown">
                         <span>Export</span>
                         <em class="icon ni ni-chevron-down"></em>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end">
-                        <div class="dropdown-content">
-    <ul class="link-list link-list-hover-bg-primary link-list-md">
+                    </button> 
+    <ul class="dropdown-menu">
         <li>
-            <a href="#" id="copy-text"><em class="icon ni ni-file-doc"></em><span>Copy Text</span></a>
+      <a href="#" class="dropdown-item" id="copy-text"> Copy Text </a>
         </li>
         <li>
-            <a href="#"><em class="icon ni ni-file-text"></em><span>Text</span></a>
+       <a href="#" class="dropdown-item"> Text File </a>
         </li>
-    </ul>
-                        </div>
-                    </div>
-                </div>
+    </ul>          
+        </div>
             </li>
             <li>
                 <button class="btn btn-md btn-primary rounded-pill" type="button"> Save </button>
@@ -243,6 +239,52 @@ function formatContent(output, formData) {
 
     return html;
 }
+ 
+
+// Function to create and trigger a file download
+function downloadFile(content, fileName, mimeType) {
+    const blob = new Blob([content], { type: mimeType });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = fileName;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+
+// Handle export dropdown options
+document.querySelectorAll('.dropdown-menu .dropdown-item').forEach(item => {
+    item.addEventListener('click', function(e) {
+        e.preventDefault();
+        const editor = document.getElementById('editor-v1');
+        if (!editor) {
+            alert('Editor content not found.');
+            return;
+        }
+
+        const action = this.id || this.textContent.trim();
+        const templateTitle = document.querySelector('.nk-editor-title h4').textContent.trim() || 'Generated_Content';
+        const timestamp = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+        const fileNameBase = `${templateTitle}_${timestamp}`;
+
+        if (action === 'copy-text') {
+            // Copy Text (already implemented)
+            const content = editor.textContent || editor.innerText;
+            navigator.clipboard.writeText(content).then(() => {
+                toastr.success('Text copied to clipboard!');
+            }).catch(err => {
+                alert('Failed to copy text: ' + err);
+            });
+        } else if (action === 'Text File') {
+            // Export as Text File
+            const content = editor.textContent || editor.innerText;
+            downloadFile(content, `${fileNameBase}.txt`, 'text/plain');
+            toastr.success('Text file downloaded successfully!');
+        }  
+    });
+});
  
 </script>
 
