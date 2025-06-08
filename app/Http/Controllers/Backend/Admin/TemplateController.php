@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Template;
 use App\Models\TemplateInputFields;
+use App\Models\GeneratedContent;
 
 class TemplateController extends Controller
 {
@@ -138,6 +139,18 @@ class TemplateController extends Controller
      //End Method 
 
     public function AdminContentGenerate(Request $request, $id){
+
+        // Fetch the template with its input fields
+        $template = Template::with('inputFields')->findOrFail($id);
+        $user = auth()->user();
+
+        /// Validate request 
+        $validateData = $request->validate([
+            'language' => 'required|string|in:English (USA),Bangla (Bangladesh),Hindi (India),French (France),Turkish (Turkey)',
+            'ai_model' => 'required|string|in:gpt-4,gpt-3.5-turbo',
+            'result_length' => 'required|integer|min:50|max:1000',
+        ]);
+        
 
     }
       //End Method 
