@@ -147,7 +147,7 @@
      
     <div class="nk-editor-body">
         <div class="wide-md h-100">
-            <div class="js-editor nk-editor-style-clean nk-editor-full" data-menubar="false" id="editor-v2">
+            <div class="js-editor nk-editor-style-clean nk-editor-full" data-menubar="false" >
                 <div id="editor-v1">  </div>
                 </div> <!-- .js-editor -->
         </div>
