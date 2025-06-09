@@ -9,6 +9,8 @@ use App\Http\Controllers\Backend\Admin\PlanController;
 use App\Http\Controllers\Backend\Admin\TemplateController;
 use App\Http\Controllers\Backend\Admin\DocumentController;
 
+use App\Http\Controllers\Backend\Client\UserController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,7 +20,7 @@ Route::get('/', function () {
 Route::middleware(['auth', IsUser::class])->group(function () {
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('client.index');
 })->name('dashboard');
 
 });
