@@ -20,6 +20,12 @@ class DocumentController extends Controller
     }
     /// End Method 
 
+    public function EditAdminDocument($id){
+        $document = GeneratedContent::findOrFail($id);
+        return view('admin.backend.document.edit_document',compact('document')); 
+    }
+    /// End Method 
+
 
 
 

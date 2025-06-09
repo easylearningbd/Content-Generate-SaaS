@@ -67,7 +67,7 @@
             </td> 
 
             <td class="tb-col tb-col-sm">
-        <a href="{{ route('edit.plans',$item->id) }}" class="btn btn-success btn-sm">Edit</a>  
+        <a href="{{ route('edit.admin.document',$item->id) }}" class="btn btn-success btn-sm">Edit</a>  
          <a href="{{ route('delete.plans',$item->id) }}" class="btn btn-danger btn-sm" id="delete">Delete</a>          
             </td>
             

@@ -68,7 +68,8 @@ Route::get('/dashboard', function () {
 
 
   Route::controller(DocumentController::class)->group(function(){
-    Route::get('/admin/document', 'AdminDocument')->name('admin.document'); 
+    Route::get('/admin/document', 'AdminDocument')->name('admin.document');
+    Route::get('/edit/admin/document/{id}', 'EditAdminDocument')->name('edit.admin.document'); 
      
   });
 
