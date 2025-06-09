@@ -23,6 +23,12 @@ Route::get('/dashboard', function () {
     return view('client.index');
 })->name('dashboard');
 
+
+ Route::get('/user/logout', [UserController::class, 'UserLogout'])->name('user.logout');
+
+
+
+
 });
 /// Eend User Routes 
 

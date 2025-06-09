@@ -9,7 +9,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
-{
+{ 
     
    public function AdminLogout(Request $request){
         Auth::guard('web')->logout();
