@@ -46,6 +46,17 @@ class DocumentController extends Controller
     }
      /// End Method 
 
+     public function DeleteAdminDocument($id){
+
+        GeneratedContent::find($id)->delete();
+        $notification = array(
+        'message' => 'Document Deleted Successfully',
+        'alert-type' => 'success'
+     );
+
+     return redirect()->back()->with($notification); 
+     }
+     /// End Method 
 
 
 
