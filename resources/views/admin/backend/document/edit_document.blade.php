@@ -28,7 +28,7 @@
      
  {{-- Right Sidebar  --}}
     <div class="col-md-12">
- <form action="" method="post" id="editDocumentForm" enctype="multipart/form-data">
+ <form action="{{ route('admin.update.document',$document->id) }}" method="post" id="editDocumentForm" enctype="multipart/form-data">
     @csrf  
 
     <input type="hidden" name="output" id="editor-output">
