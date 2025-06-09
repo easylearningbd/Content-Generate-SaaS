@@ -7,6 +7,7 @@ use App\Http\Middleware\IsUser;
 use App\Http\Controllers\Backend\Admin\AdminController;
 use App\Http\Controllers\Backend\Admin\PlanController;
 use App\Http\Controllers\Backend\Admin\TemplateController;
+use App\Http\Controllers\Backend\Admin\DocumentController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -61,12 +62,15 @@ Route::get('/dashboard', function () {
 
     Route::get('/details/template/{id}', 'DetailsTemplate')->name('details.template');
 
-    Route::post('/content/generate/{id}', 'AdminContentGenerate')->name('content.generate');
-
-
+    Route::post('/content/generate/{id}', 'AdminContentGenerate')->name('content.generate'); 
     
   });
 
+
+  Route::controller(DocumentController::class)->group(function(){
+    Route::get('/admin/document', 'AdminDocument')->name('admin.document'); 
+     
+  });
 
 
 
