@@ -37,7 +37,7 @@
                 </a>
                 <ul class="nk-menu-sub">
                     <li class="nk-menu-item">
-                        <a href="{{ route('admin.profile') }}" class="nk-menu-link">
+                        <a href="{{ route('user.profile') }}" class="nk-menu-link">
                             <span class="nk-menu-text">Profile</span>
                         </a>
                     </li>
