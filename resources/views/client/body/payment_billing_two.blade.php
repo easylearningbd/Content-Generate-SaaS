@@ -1,15 +1,40 @@
+@php
+    use App\Models\Plan;
+    use App\Models\User;
+    
+    $id = Auth::user()->id;
+    $user = User::with('plan')->find($id);
+    $userPlan = $user->plan;
+    $allPlans = Plan::all();
+
+    $wordsUsed = $user->words_used ?? 0;
+    $wordLimit = $userPlan ? $userPlan->monthly_word_limit : 1000;
+    $wordLeft = max(0, $wordLimit - $wordsUsed);
+    $percentageUsed = $wordLimit > 0 ? min(100, ($wordsUsed / $wordLimit) * 100) : 0;
+
+@endphp
+
+
+
 <div class="tab-pane fade" id="payment-billing-2-tab-pane">
 <div class="d-flex align-items-center justify-content-between border-bottom border-light mt-5 pb-1">
     <h5>Subscription</h5>
 </div>
 <div class="pt-4">
-    <h3 class="fw-normal">Basic Plan <span class="badge border border-light text-light rounded-pill ms-1">Free</span></h3>
-    <div class="sub-text">5000 words generation with access of 10 templates.</div>
+    <h3 class="fw-normal">{{ $userPlan ? $userPlan->name . ' Plan' : 'Basic Plan' }} 
+        
+        @if ($userPlan && $userPlan->price == 0)
+            <span class="badge border border-light text-light rounded-pill ms-1">Free</span>
+        @endif
+        </h3>
+
+
+    <div class="sub-text">{{ $wordsUsed }} words generation with access to {{ $userPlan ? $userPlan->templates : 0 }} templates.</div>
     <div class="progress progress-md bg-primary bg-opacity-10 mt-3">
         <div class="progress-bar bg-primary" data-progress="25%"></div>
     </div>
     <div class="d-flex flex-wrap align-items-center mt-2">
-        <div class="caption-text">940 <span class="text-light">of 5000 words used.</span></div>
+        <div class="caption-text">{{ $wordsUsed }} <span class="text-light">of {{ $wordLimit }} words used.</span></div>
         <div class="sub-text text-dark">To increase your limit, check our <a href="#">Pricing &amp; Plans</a>.</div>
     </div>
 </div>
