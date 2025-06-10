@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\Admin\TemplateController;
 use App\Http\Controllers\Backend\Admin\DocumentController;
 
 use App\Http\Controllers\Backend\Client\UserController;
+use App\Http\Controllers\Backend\Client\UserTemplateController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -30,6 +31,15 @@ Route::get('/dashboard', function () {
   Route::post('/user/profile/store', [UserController::class, 'UserProfileStore'])->name('user.profile.store');
   Route::get('/user/change/password', [UserController::class, 'UserChangePassword'])->name('user.change.password');
   Route::post('/user/password/update', [UserController::class, 'UserPasswordUpdate'])->name('user.password.update'); 
+
+Route::controller(UserTemplateController::class)->group(function(){
+    Route::get('/user/template', 'UserTemplate')->name('user.template'); 
+    
+  });
+
+
+
+
 
 });
 /// Eend User Routes 
