@@ -31,7 +31,7 @@
 
     <div class="sub-text">{{ $wordsUsed }} words generation with access to {{ $userPlan ? $userPlan->templates : 0 }} templates.</div>
     <div class="progress progress-md bg-primary bg-opacity-10 mt-3">
-        <div class="progress-bar bg-primary" data-progress="25%"></div>
+        <div class="progress-bar bg-primary" data-progress="{{ round($percentageUsed, 2) }}%" style="width:{{ round($percentageUsed, 2) }}% "></div>
     </div>
     <div class="d-flex flex-wrap align-items-center mt-2">
         <div class="caption-text">{{ $wordsUsed }} <span class="text-light">of {{ $wordLimit }} words used.</span></div>
@@ -51,83 +51,49 @@
     </div><!-- .pricing-toggle -->
 </div>
 <div class="row g-gs">
+   
+   @foreach ($allPlans as $plan) 
     <div class="col-md-6">
         <div class="pricing rounded pricing-featured bg-gradient-custom gradient-start-primary-light gradient-middle-primary-light gradient-end-blue-light gradient-angle-90">
             <div class="pricing-content">
-                <h5 class="fw-normal text-dark">Professional</h5>
-                <h2 class="mb-3 d-inline-block text-gradient-custom gradient-start-primary-light gradient-middle-primary-light gradient-end-blue-light gradient-angle-90">Unlimited Words</h2>
+                <h5 class="fw-normal text-dark">{{ $plan->name }}</h5>
+                <h2 class="mb-3 d-inline-block text-gradient-custom gradient-start-primary-light gradient-middle-primary-light gradient-end-blue-light gradient-angle-90">{{ $plan->monthly_word_limit }} Words</h2>
                 <div class="pricing-price-wrap">
                     <div class="pricing-price pricing-toggle-content monthly active">
-                        <h3 class="display-1 mb-3 fw-semibold">$48 <span class="caption-text text-light fw-normal"> / month</span></h3>
+                        <h3 class="display-1 mb-3 fw-semibold">${{ $plan->price }} <span class="caption-text text-light fw-normal"> / month</span></h3>
                     </div>
                     <div class="pricing-price pricing-toggle-content yearly">
-                        <h3 class="display-1 mb-3 fw-semibold">$500 <span class="caption-text text-light fw-normal"> / year</span></h3>
+                        <h3 class="display-1 mb-3 fw-semibold">${{ number_format($plan->price * 12 * 0.75, 2) }} <span class="caption-text text-light fw-normal"> / year</span></h3>
                     </div>
                 </div>
-                <div class="mb-2">
-                    <div class="pricing-toggle-content monthly active">
-                        <button class="btn btn-gradient w-100">Upgrade Now</button>
-                    </div>
-                    <div class="pricing-toggle-content yearly">
-                        <button class="btn btn-gradient w-100">Upgrade Now</button>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-center text-center text-dark fs-12px lh-lg fst-italic mt-1">
-                        <svg width="13" height="13" viewBox="0 0 13 13" class="text-danger" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.5 2.375V10.625" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M2.9281 4.4375L10.0719 8.5625" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M2.9281 8.5625L10.0719 4.4375" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        <span class="ms-1">Cancel Anytime</span>
-                    </div>
-                </div>
+    <div class="mb-2">
+        <div class="pricing-toggle-content monthly active">
+            <button class="btn {{ $plan->price > 0 ? 'btn-gradient' : 'btn-outline-light'}}  w-100">Upgrade Now</button>
+        </div>
+        <div class="pricing-toggle-content yearly">
+            <button class="btn {{ $plan->price > 0 ? 'btn-gradient' : 'btn-outline-light'}}  w-100">Upgrade Now</button>
+        </div>
+        <div class="d-flex align-items-center justify-content-center text-center text-dark fs-12px lh-lg fst-italic mt-1">
+            <svg width="13" height="13" viewBox="0 0 13 13" class="text-danger" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.5 2.375V10.625" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M2.9281 4.4375L10.0719 8.5625" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M2.9281 8.5625L10.0719 4.4375" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span class="ms-1">Cancel Anytime</span>
+        </div>
+    </div>
                 <ul class="pricing-features">
-                    <li><em class="icon text-primary ni ni-check-circle-fill"></em><span>Unlimited words generation</span></li>
-                    <li><em class="icon text-primary ni ni-check-circle-fill"></em><span>Access to all templates for free</span></li>
-                    <li><em class="icon text-primary ni ni-check-circle-fill"></em><span>No project limitation</span></li>
-                    <li><em class="icon text-primary ni ni-check-circle-fill"></em><span>30 days of AI generation history</span></li>
+                    <li><em class="icon text-primary ni ni-check-circle-fill"></em><span>{{ $plan->monthly_word_limit }} words generation</span></li>
+                    <li><em class="icon text-primary ni ni-check-circle-fill"></em><span>Access to {{ $plan->templates }} templates  </span></li>
+                    <li><em class="icon text-primary ni ni-check-circle-fill"></em><span>Select Multiple Language </span></li>
+                    <li><em class="icon text-primary ni ni-check-circle-fill"></em><span>Multiple GPT Model Version </span></li>
                     <li><em class="icon text-primary ni ni-check-circle-fill"></em><span>Wordpress plugin integration</span></li>
                 </ul>
             </div>
         </div>
     </div><!-- .col -->
-    <div class="col-md-6">
-        <div class="pricing rounded">
-            <div class="pricing-content">
-                <h5 class="fw-normal text-light">Enterprise</h5>
-                <h2 class="mb-3">Customized Plan</h2>
-                <div class="pricing-price-wrap">
-                    <div class="pricing-price pricing-toggle-content monthly active">
-                        <h3 class="display-1 mb-3 fw-semibold">$225 <span class="caption-text text-light fw-normal"> / month</span></h3>
-                    </div>
-                    <div class="pricing-price pricing-toggle-content yearly">
-                        <h3 class="display-1 mb-3 fw-semibold">$2500 <span class="caption-text text-light fw-normal"> / year</span></h3>
-                    </div>
-                </div>
-                <div class="mb-2">
-                    <div class="pricing-toggle-content monthly active">
-                        <button class="btn btn-outline-light w-100">Upgrade Now</button>
-                    </div>
-                    <div class="pricing-toggle-content yearly">
-                        <button class="btn btn-outline-light w-100">Contact Sales</button>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-center text-center text-light fs-12px lh-lg fst-italic mt-1">
-                        <svg width="13" height="13" viewBox="0 0 13 13" class="text-danger" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.5 2.375V10.625" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M2.9281 4.4375L10.0719 8.5625" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M2.9281 8.5625L10.0719 4.4375" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        <span class="ms-1">Cancel Anytime</span>
-                    </div>
-                </div>
-                <ul class="pricing-features">
-                    <li><em class="icon text-primary ni ni-check-circle"></em><span>Unlimited words generation</span></li>
-                    <li><em class="icon text-primary ni ni-check-circle"></em><span>Access to all templates for free</span></li>
-                    <li><em class="icon text-primary ni ni-check-circle"></em><span>No project limitation</span></li>
-                    <li><em class="icon text-primary ni ni-check-circle"></em><span>30 days of AI generation history</span></li>
-                    <li><em class="icon text-primary ni ni-check-circle"></em><span>Wordpress plugin integration</span></li>
-                </ul>
-            </div>
-        </div>
-    </div><!-- .col -->
+ @endforeach
+
+     
 </div><!-- .row -->
 </div><!-- .tab-pane -->
