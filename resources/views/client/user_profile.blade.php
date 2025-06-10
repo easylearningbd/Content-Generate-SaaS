@@ -1,5 +1,7 @@
 @extends('client.client_dashboard')
 @section('client') 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 <div class="nk-content-inner">
 <div class="nk-content-body">
     <div class="nk-block-head nk-page-head">
@@ -22,97 +24,78 @@
             </li>
         </ul>
         <div class="tab-content">
-            <div class="tab-pane fade show active" id="profile-tab-pane">
-                <div class="d-flex align-items-center justify-content-between border-bottom border-light mt-5 pb-1">
-                    <h5>Personal Details</h5>
-                    <a class="link link-primary fw-normal" href="#">Edit Profile</a>
-                </div>
-                <table class="table table-flush table-middle mb-0">
-                    <tbody>
-                        <tr>
-                            <td class="tb-col">
-                                <span class="fs-15px text-light">Full Name</span>
-                            </td>
-                            <td class="tb-col">
-                                <span class="fs-15px text-base">Shawn Mahbub</span>
-                            </td>
-                            <td class="tb-col tb-col-end tb-col-sm"></td>
-                        </tr>
-                        <tr>
-                            <td class="tb-col">
-                                <span class="fs-15px text-light">Email</span>
-                            </td>
-                            <td class="tb-col">
-                                <span class="fs-15px text-base">shawn@websbd.com</span>
-                            </td>
-                            <td class="tb-col tb-col-end tb-col-sm"></td>
-                        </tr>
-                        <tr>
-                            <td class="tb-col">
-                                <span class="fs-15px text-light">Phone</span>
-                            </td>
-                            <td class="tb-col">
-                                <span class="fs-15px text-base">+88015152088942</span>
-                            </td>
-                            <td class="tb-col tb-col-end tb-col-sm"></td>
-                        </tr>
-                        <tr>
-                            <td class="tb-col">
-                                <span class="fs-15px text-light">Country</span>
-                            </td>
-                            <td class="tb-col">
-                                <span class="fs-15px text-base">Bangladesh</span>
-                            </td>
-                            <td class="tb-col tb-col-end tb-col-sm"></td>
-                        </tr>
-                        <tr>
-                            <td class="tb-col">
-                                <span class="fs-15px text-light">Password</span>
-                            </td>
-                            <td class="tb-col">
-                                <span class="fs-15px text-base"><a class="link link-primary fw-normal" href="#">Change Password</a></span>
-                            </td>
-                            <td class="tb-col tb-col-end tb-col-sm">
-                                <span class="fs-13px text-light">Last changed at Feb 10, 2023</span>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="d-flex align-items-center justify-content-between border-bottom border-light mt-4 pb-1">
-                    <h5>Preferences</h5>
-                </div>
-                <table class="table table-flush">
-                    <tbody>
-                        <tr>
-                            <td class="py-3">
-                                <span class="fs-15px text-light">Timezone</span>
-                            </td>
-                            <td class="py-3">
-                                <span class="fs-15px text-base">GMT +06:00</span>
-                            </td>
-                            <td class="py-3 text-end"><a class="link link-primary fw-normal" href="#">Edit</a></td>
-                        </tr>
-                        <tr>
-                            <td class="py-3">
-                                <span class="fs-15px text-light">Date Format</span>
-                            </td>
-                            <td class="py-3">
-                                <span class="fs-15px text-base">DD/MM/YYYY</span>
-                            </td>
-                            <td class="py-3 text-end"><a class="link link-primary fw-normal" href="#">Edit</a></td>
-                        </tr>
-                        <tr>
-                            <td class="py-3">
-                                <span class="fs-15px text-light">Language</span>
-                            </td>
-                            <td class="py-3">
-                                <span class="fs-15px text-base">English US</span>
-                            </td>
-                            <td class="py-3 text-end"><a class="link link-primary fw-normal" href="#">Edit</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div><!-- .tab-pane -->
+    <div class="tab-pane fade show active" id="profile-tab-pane">
+   
+   <form action="{{ route('user.profile.store') }}" method="post" enctype="multipart/form-data">
+        @csrf   
+
+     <div class="row g-3 gx-gs">
+                    
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="exampleFormControlInputText1" class="form-label">Name </label>
+            <div class="form-control-wrap">
+                <input type="text" name="name" class="form-control" value="{{ $profileData->name }}"  >
+            </div>
+        </div>
+    </div>
+
+     <div class="col-md-6">
+        <div class="form-group">
+            <label for="exampleFormControlInputText1" class="form-label">Email </label>
+            <div class="form-control-wrap">
+                <input type="email" name="email" class="form-control" value="{{ $profileData->email }}"  >
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="exampleFormControlInputText1" class="form-label">Phone </label>
+            <div class="form-control-wrap">
+                <input type="text" name="phone" class="form-control" value="{{ $profileData->phone }}"  >
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="exampleFormControlInputText1" class="form-label">Address </label>
+            <div class="form-control-wrap">
+                <input type="text" name="address" class="form-control" value="{{ $profileData->address }}"  >
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="exampleFormControlInputText1" class="form-label">Profile Image </label>
+            <div class="form-control-wrap">
+                <input type="file" name="photo" class="form-control" id="image" >
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="exampleFormControlInputText1" class="form-label">  </label>
+            <div class="form-control-wrap">
+                 <img id="showImage" src="{{ (!empty($profileData->photo)) ? url('upload/user_images/'.$profileData->photo) : url('upload/no_image.jpg') }}" class="rounded-circle avatar-xl img-thumbnail float-start" style="width: 80px; height:80px;">
+            </div>
+        </div>
+    </div>
+               
+    <div class="col-lg-12 col-xl-12">
+<button type="submit" class="btn btn-secondary">Save Changes</button> 
+    </div>
+            
+                    
+    </div>
+    </form>      
+                
+              
+    </div><!-- .tab-pane -->
     @include('client.body.payment_billing')  
     @include('client.body.payment_billing_two')
             
@@ -123,7 +106,18 @@
 
 
 
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#image').change(function(e){
+            var reader = new FileReader();
+            reader.onload = function(e){
+                $('#showImage').attr('src',e.target.result);
+            }
+            reader.readAsDataURL(e.target.files['0']);
+        })
+    })
 
+</script>
 
 
 
