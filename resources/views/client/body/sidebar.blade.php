@@ -111,19 +111,47 @@
 <div class="nk-sidebar-element nk-sidebar-footer">
 <div class="nk-sidebar-footer-extended pt-3">
     <div class="border border-light rounded-3">
-        <div class="px-3 py-2 bg-white border-bottom border-light rounded-top-3">
-            <div class="d-flex flex-wrap align-items-center justify-content-between">
-                <h6 class="lead-text">Free Plan</h6>
-                <a class="link link-primary" href="pricing-plans.html">
-                    <em class="ni ni-spark-fill icon text-warning"></em>
-                    <span>Upgrade</span>
-                </a>
-            </div>
-            <div class="progress progress-md">
-                <div class="progress-bar" data-progress="25%"></div>
-            </div>
-            <h6 class="lead-text mt-2">1,360 <span class="text-light">words left</span></h6>
+ 
+    @php
+        $id = Auth::user()->id;
+        $profileData = App\Models\User::find($id);
+
+        /// Define word limits base on the Plan table 
+        $wordLimits = [
+            'Free' => 1000,
+            'Silver' => 2000,
+            'Diamond' => 5000,
+        ];
+    
+        /// Get the pan name and corresponding word limit 
+        $planName = $profileData->plan->name;
+        $wordLimit = isset($wordLimits[$planName]) ? $wordLimits[$planName] : 1000; // Default to 1000 if any plan not found
+
+        $totalWords = $profileData->current_word_usage ?? $wordLimit;
+        $wordsUsed = $profileData->words_used ?? 0;
+
+        // Calculate words left and percentage used 
+        $wordsLeft = max(0, $totalWords - $wordsUsed);
+        $percentageUsed = $totalWords > 0 ? min(100, ($wordsUsed / $totalWords) * 100) : 0;
+
+
+
+    @endphp
+        
+        
+    <div class="px-3 py-2 bg-white border-bottom border-light rounded-top-3">
+        <div class="d-flex flex-wrap align-items-center justify-content-between">
+            <h6 class="lead-text">{{ $profileData->plan->name }} Plan</h6>
+            <a class="link link-primary" href="{{ route('user.profile') }}">
+                <em class="ni ni-spark-fill icon text-warning"></em>
+                <span>Upgrade</span>
+            </a>
         </div>
+        <div class="progress progress-md">
+            <div class="progress-bar" data-progress="{{ $percentageUsed, 2}}%" style="width: {{ round($percentageUsed, 2) }}%" ></div>
+        </div>
+        <h6 class="lead-text mt-2">{{ $wordsLeft }} <span class="text-light">words left</span></h6>
+    </div>
 
     @php
         $id = Auth::user()->id;
