@@ -29,7 +29,7 @@
                     <p><strong>Your Blanace Is {{ $user->current_word_usage - $user->words_used }} Words Left </strong></p> 
                 </div>
 
- <form id="generateForm" action="{{ route('content.generate',$template->id) }}" method="post" enctype="multipart/form-data">
+ <form id="generateForm" action="{{ route('user.content.generate',$template->id) }}" method="post" enctype="multipart/form-data">
      @csrf  
 
     <div class="form-group">
