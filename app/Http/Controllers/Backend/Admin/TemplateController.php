@@ -130,7 +130,7 @@ class TemplateController extends Controller
 
      return redirect()->route('admin.template')->with($notification); 
     }
-    //End Method 
+    //End Method  
 
 
     public function DetailsTemplate($id){

@@ -22,4 +22,16 @@ class UserTemplateController extends Controller
         return view('client.backend.template.all_template',compact('user','templates'));
     }
     // End Method 
+
+    public function UserDetailsTemplate($id){
+        $template = Template::with('inputFields')->findOrFail($id);
+        $user = Auth::user();
+        return view('client.backend.template.details_template',compact('template','user')); 
+
+    }
+       // End Method 
+
+
+
+
 }
