@@ -19,8 +19,8 @@
                 </div> 
                 @endif
 
-    <form action="">
-        @csrf
+    <form action="{{ route('user.process.checkout') }}" method="post">
+    @csrf
     <div class="form-group mb-3">
         <label for="plan_id">Select Plan</label>
         <select name="plan_id" class="form-control" required>

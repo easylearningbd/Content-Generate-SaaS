@@ -19,6 +19,46 @@ class CheckoutController extends Controller
     }
     // End Method 
 
+    public function UserProcessCheckout(Request $request){
+
+        $request->validate([
+            'plan_id' => 'required|exists:plans,id',
+            'bank_name' => 'required|string',
+        ]);
+
+        $user = Auth::user();
+        $newPlan = Plan::find($request->plan_id);
+
+        BillingHistory::create([
+            'user_id' => $user->id,
+            'plan_id' => $newPlan->id,
+            'payment_date' => now(),
+            'total' => $newPlan->price,
+            'bank_name' => $request->bank_name,
+            'account_holder' => $request->account_holder,
+            'account_number' => $request->account_number, 
+        ]);
+
+        /// Update user plan
+        $user->plan_id = $newPlan->id;
+        $user->current_word_usage = $newPlan->monthly_word_limit;
+        $user->save();
+
+        $notification = array(
+        'message' => 'Plan Upgreate request submitted',
+        'alert-type' => 'success'
+       );
+
+     return redirect()->route('payment.success')->with($notification);
+
+    }
+     // End Method 
+
+     public function PaymentSuccess(){
+        return view('client.backend.checkout.payment_success');
+     }
+     // End Method 
+
 
 
 

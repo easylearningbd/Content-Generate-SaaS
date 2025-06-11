@@ -17,6 +17,9 @@ return new class extends Migration
             $table->foreignId('plan_id')->constrained()->onDelete('cascade');
             $table->dateTime('payment_date');
             $table->decimal('total',8,2);
+            $table->string('bank_name')->nullable();
+            $table->string('account_holder')->nullable();
+            $table->string('account_number')->nullable();
             $table->enum('status', ['Paid','Failed','Pending'])->default('Pending');
             $table->timestamps();
         });
