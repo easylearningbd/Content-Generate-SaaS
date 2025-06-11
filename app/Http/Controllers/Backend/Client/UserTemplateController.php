@@ -128,6 +128,14 @@ class UserTemplateController extends Controller
       //End Method 
 
 
+   public function UserDocument(){
+        $id = Auth::user()->id;
+        $document = GeneratedContent::where('user_id',$id)->orderBy('id','desc')->get();
+        return view('client.backend.document.all_document',compact('document'));
+    }
+    /// End Method 
+
+
 
 
 }

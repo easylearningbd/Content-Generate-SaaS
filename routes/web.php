@@ -37,6 +37,8 @@ Route::controller(UserTemplateController::class)->group(function(){
     Route::get('/user/details/template/{id}', 'UserDetailsTemplate')->name('user.details.template');
     Route::post('/user/content/generate/{id}', 'UserContentGenerate')->name('user.content.generate');
     
+    Route::get('/user/document', 'UserDocument')->name('user.document'); 
+    
   });
 
 
