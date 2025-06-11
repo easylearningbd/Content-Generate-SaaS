@@ -18,7 +18,7 @@ class DocumentController extends Controller
         $document = GeneratedContent::orderBy('id','desc')->get();
         return view('admin.backend.document.all_document',compact('document'));
     }
-    /// End Method 
+    /// End Method  
 
     public function EditAdminDocument($id){
         $document = GeneratedContent::findOrFail($id);

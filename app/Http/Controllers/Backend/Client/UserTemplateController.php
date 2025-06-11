@@ -135,6 +135,32 @@ class UserTemplateController extends Controller
     }
     /// End Method 
 
+     public function EditUserDocument($id){
+        $document = GeneratedContent::findOrFail($id);
+        return view('client.backend.document.edit_document',compact('document')); 
+    }
+    /// End Method 
+
+    public function UserUpdateDocument(Request $request, $id){
+        $document = GeneratedContent::findOrFail($id);
+
+        $validateData = $request->validate([
+            'output' => 'required|string',
+        ]);
+
+        $document->update([
+            'output' => $validateData['output'],
+        ]);
+
+        $notification = array(
+        'message' => 'Document Updated Successfully',
+        'alert-type' => 'success'
+     );
+
+     return redirect()->route('user.document')->with($notification); 
+    }
+     /// End Method 
+
 
 
 
