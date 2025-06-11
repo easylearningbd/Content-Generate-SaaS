@@ -1,3 +1,23 @@
+@php
+    $id = Auth::user()->id;
+    $profileData = App\Models\User::with('plan','billingHistories.plan')->find($id);
+
+    $planPrices = $profileData->plan->price ?? 0;
+
+    $planPrice = $profileData->plan->price ?? ($planPrices[$profileData->plan->name] ?? 0);
+
+    /// Calulate next due date
+    $lastBilling = $profileData->billingHistories->sortByDesc('payment_date')->first();
+    $nextDueDate = $lastBilling ? \Carbon\Carbon::parse($lastBilling->payment_date)->addMonth()->format('M d, Y')
+    : now()->addMonth->format('M d, Y');
+
+    /// Default payment method 
+    $paymentMethod = $profileData->payment_method ?? 'Bank Transfer';
+    $paymentIcon = $profileData->payment_icon ?? 'upload/paypal.png';
+
+@endphp
+
+
 <div class="tab-pane fade" id="payment-billing-tab-pane">
 <div class="d-flex flex-wrap align-items-center justify-content-between border-bottom border-light mt-5 mb-4 pb-1">
     <h5 class="mb-0">Your Subscription</h5>
