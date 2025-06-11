@@ -68,10 +68,10 @@
                 </div>
     <div class="mb-2">
         <div class="pricing-toggle-content monthly active">
-            <button class="btn {{ $plan->price > 0 ? 'btn-gradient' : 'btn-outline-light'}}  w-100">Upgrade Now</button>
+            <a href="{{ route('user.checkout') }}" class="btn {{ $plan->price > 0 ? 'btn-gradient' : 'btn-outline-light'}}  w-100">Upgrade Now</a>
         </div>
         <div class="pricing-toggle-content yearly">
-            <button class="btn {{ $plan->price > 0 ? 'btn-gradient' : 'btn-outline-light'}}  w-100">Upgrade Now</button>
+            <a  href="{{ route('user.checkout') }}" class="btn {{ $plan->price > 0 ? 'btn-gradient' : 'btn-outline-light'}}  w-100">Upgrade Now </a>
         </div>
         <div class="d-flex align-items-center justify-content-center text-center text-dark fs-12px lh-lg fst-italic mt-1">
             <svg width="13" height="13" viewBox="0 0 13 13" class="text-danger" fill="none" xmlns="http://www.w3.org/2000/svg">

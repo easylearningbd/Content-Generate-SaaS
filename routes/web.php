@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\Admin\DocumentController;
 
 use App\Http\Controllers\Backend\Client\UserController;
 use App\Http\Controllers\Backend\Client\UserTemplateController;
+use App\Http\Controllers\Backend\Client\CheckoutController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -45,6 +46,11 @@ Route::controller(UserTemplateController::class)->group(function(){
   });
 
 
+Route::controller(CheckoutController::class)->group(function(){
+    Route::get('/user/checkout', 'UserCheckout')->name('user.checkout'); 
+   
+    
+  });
 
 
 
