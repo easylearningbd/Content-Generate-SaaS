@@ -114,7 +114,7 @@
             <div class="badge text-bg-success-soft rounded-pill px-2 py-1 fs-6 lh-sm">{{ $billing->status }}</div>
         </td>
         <td class="tb-col tb-col-end">
-            <a href="#" class="link">Get Invoice</a>
+            <a href="{{ route('invoice.generate',$billing->id) }}" class="link">Get Invoice</a>
         </td>
     </tr>
 
