@@ -111,6 +111,12 @@ Route::get('/dashboard', function () {
      
   });
 
+  Route::controller(AdminController::class)->group(function(){
+    Route::get('/all/orders', 'AllOrders')->name('all.orders'); 
+     
+  });
+
+
 
 
 

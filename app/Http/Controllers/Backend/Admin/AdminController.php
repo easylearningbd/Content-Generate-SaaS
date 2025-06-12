@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use App\Models\BillingHistory;
 
 class AdminController extends Controller
 { 
@@ -106,6 +107,12 @@ class AdminController extends Controller
      return redirect()->route('login')->with($notification); 
    }
    //End Method 
+
+   public function AllOrders(){
+      $allData = BillingHistory::orderBy('id','desc')->get();
+      return view('admin.backend.order.all_order',compact('allData'));
+   }
+     //End Method 
 
 
 
