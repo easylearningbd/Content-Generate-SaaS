@@ -75,7 +75,7 @@
 
             <td class="tb-col tb-col-sm">
             @if ($item->status === 'Pending')
-             <a href="{{ route('edit.plans',$item->id) }}" class="btn btn-success btn-sm">Update</a>  
+             <a href="{{ route('update.order.status',$item->id) }}" class="btn btn-success btn-sm">Update</a>  
              @else
              <span class="badge text-bg-secondary-soft px-2 py-1 fs-6 lh-sm">No Action Needed</span>
             @endif

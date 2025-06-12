@@ -114,6 +114,22 @@ class AdminController extends Controller
    }
      //End Method 
 
+   public function UpdateOrderStatus($id){
+      $billing = BillingHistory::findOrFail($id);
+
+      $billing->status = 'Paid';
+      $billing->save();
+
+      $notification = array(
+        'message' => 'Status Updated Successfully',
+        'alert-type' => 'Success'
+     );
+
+     return redirect()->back()->with($notification);
+
+   }
+   //End Method 
+
 
 
 }

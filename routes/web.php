@@ -113,6 +113,7 @@ Route::get('/dashboard', function () {
 
   Route::controller(AdminController::class)->group(function(){
     Route::get('/all/orders', 'AllOrders')->name('all.orders'); 
+    Route::get('/update/order/status/{id}', 'UpdateOrderStatus')->name('update.order.status'); 
      
   });
 
