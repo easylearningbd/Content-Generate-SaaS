@@ -14,7 +14,7 @@ use App\Http\Controllers\Backend\Client\UserTemplateController;
 use App\Http\Controllers\Backend\Client\CheckoutController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.index');
 });
 
 
