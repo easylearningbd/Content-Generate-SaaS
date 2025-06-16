@@ -69,3 +69,54 @@
          @include('home.layout.slider')   
          
         </header><!-- .nk-header -->
+        
+<script type="text/javascript">
+
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleButtons = document.querySelectorAll('.dark-mode-toggle');
+    const bodyElement = document.body;
+
+    // Function to apply theme and force reflow
+    const applyTheme = (isDark) => {
+        if (isDark) {
+            bodyElement.classList.add('is-dark');
+            toggleButtons.forEach(button => button.classList.add('dark-active'));
+        } else {
+            bodyElement.classList.remove('is-dark');
+            toggleButtons.forEach(button => button.classList.remove('dark-active'));
+        }
+        // Force reflow to apply styles immediately
+        bodyElement.style.display = 'none';
+        bodyElement.offsetHeight; // Trigger reflow
+        bodyElement.style.display = '';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    };
+
+    // Apply saved theme on load
+    const savedTheme = localStorage.getItem('theme');
+    applyTheme(savedTheme === 'dark');
+
+    // Toggle theme on button click for each toggle button
+    toggleButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            console.log('Button clicked'); // Debug: Confirm click event
+            const isDark = !bodyElement.classList.contains('is-dark');
+            console.log('Toggled to isDark:', isDark, 'Classes before apply:', bodyElement.classList);
+            applyTheme(isDark);
+
+            // Reapply styles to ensure dynamic content updates
+            if (typeof window.jQuery !== 'undefined') {
+                jQuery('[class*="visible-on-"]').each(function() {
+                    jQuery(this).toggleClass('d-none', !isDark && jQuery(this).hasClass('visible-on-dark-mode'));
+                });
+            }
+
+            // Auto-refresh the page 
+            window.location.reload();
+        });
+    });
+
+     
+});
+</script>
+
