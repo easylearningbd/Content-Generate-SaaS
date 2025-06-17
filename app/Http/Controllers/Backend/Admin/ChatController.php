@@ -84,7 +84,19 @@ class ChatController extends Controller
             return $conv;
         });
 
+        $selectedConversation = $conversations->first();
 
+        if ($selectedConversation) {
+            $messages = ChatConversation::where('assistant_id',$assistantId)
+                ->where('user_id', Auth::id())
+                ->where('conversation_id',$selectedConversation->conversation_id ?? $selectedConversation->id)
+                ->orderBy('created_at','asc')
+                ->get();
+        }else {
+            $messages = collect(); 
+        }
+
+      return view('admin.backend.assistant.chat_assistant',compact('assistant','conversations','messages','selectedConversation'));
    }
     //End Method 
 
