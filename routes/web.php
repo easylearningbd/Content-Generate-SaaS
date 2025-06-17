@@ -121,6 +121,7 @@ Route::get('/dashboard', function () {
    Route::controller(ChatController::class)->group(function(){
     Route::get('/all/assistants', 'AllAssistants')->name('all.assistants');
     Route::get('/add/assistants', 'AddAssistants')->name('add.assistants'); 
+    Route::post('/chat-assistants/store', 'StoreAssistants')->name('chat-assistants.store'); 
     
      
   });

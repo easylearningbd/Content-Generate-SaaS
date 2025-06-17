@@ -21,7 +21,7 @@
         <div class="card shadown-none">
             <div class="card-body">
      
-     <form action="{{ route('store.plans') }}" method="post" enctype="multipart/form-data">
+     <form action="{{ route('chat-assistants.store') }}" method="post" enctype="multipart/form-data">
         @csrf   
 
      <div class="row g-3 gx-gs">
