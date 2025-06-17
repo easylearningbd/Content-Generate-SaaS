@@ -65,6 +65,29 @@ class ChatController extends Controller
   }
    //End private Method 
 
+   public function ChatAssistants($assistantId){
+
+    $assistant = ChatAssistant::findOrFail($assistantId);
+
+    $conversations = ChatConversation::where('chat_conversations.assistant_id',$assistantId)
+        ->where('chat_conversations.user_id', Auth::id())
+        ->select('latest.conversation_id', 'latest.id','latest.created_at','latest.message')
+        ->join('chat_conversations as latest', function($join) {
+            $join->on('latest.conversation_id', '=' , 'chat_conversations.conversation_id')
+                ->whereColumn('latest.id', '=', \DB::raw('(SELECT MAX(id) FROM chat_conversations as sub WHERE sub.conversation_id = chat_conversations.conversation_id)'));
+        })
+        ->groupBy('latest.conversation_id','latest.id','latest.created_at','latest.message')
+        ->orderBy('latest.created_at', 'desc')
+        ->get()
+        ->map(function($conv){
+            $conv->messages_count = ChatConversation::where('conversation_id', $conv->conversation_id ?? $conv->id)->count();
+            return $conv;
+        });
+
+
+   }
+    //End Method 
+
 
 
 

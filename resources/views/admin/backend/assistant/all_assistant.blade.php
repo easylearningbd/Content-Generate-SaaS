@@ -43,7 +43,7 @@
     <div class="col-sm-6 col-xxl-3 filter-item blog-content" data-category="blog-content">
         <div class="card card-full shadow-none">
             <div class="card-body">
-                <a href="{{ route('details.template',$item->id) }}">
+                <a href="{{ route('chat-assistants.chat',$item->id) }}">
                 <div class="  text-primary  bg-opacity-20 mb-3">
                      <img src="{{ (!empty($item->avatar)) ? url('upload/avatar/'.$item->avatar) : url('upload/no_image.jpg') }}" class="rounded-circle avatar-xl " style="width: 120px; height:100px;">
                 </div> 
