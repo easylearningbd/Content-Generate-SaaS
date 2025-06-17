@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\Admin\AdminController;
 use App\Http\Controllers\Backend\Admin\PlanController;
 use App\Http\Controllers\Backend\Admin\TemplateController;
 use App\Http\Controllers\Backend\Admin\DocumentController;
+use App\Http\Controllers\Backend\Admin\ChatController;
 
 use App\Http\Controllers\Backend\Client\UserController;
 use App\Http\Controllers\Backend\Client\UserTemplateController;
@@ -116,6 +117,13 @@ Route::get('/dashboard', function () {
     Route::get('/update/order/status/{id}', 'UpdateOrderStatus')->name('update.order.status'); 
      
   });
+
+   Route::controller(ChatController::class)->group(function(){
+    Route::get('/all/assistants', 'AllAssistants')->name('all.assistants'); 
+    
+     
+  });
+
 
 
 
