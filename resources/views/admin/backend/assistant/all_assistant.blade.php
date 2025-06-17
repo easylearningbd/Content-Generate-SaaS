@@ -13,7 +13,7 @@
                     <div class="">
     <ul class="d-flex gap gx-2">
             <li>
-            <a href="{{ route('add.template') }}" class="btn btn-primary">Add Assistant </a>
+            <a href="{{ route('add.assistants') }}" class="btn btn-primary">Add Assistant </a>
         </li>
         <li>
             <a href="templates-list.html" class="btn btn-md btn-icon btn-outline-light"><em class="icon ni ni-view-list-wd"></em></a>

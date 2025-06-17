@@ -18,6 +18,11 @@ class ChatController extends Controller
     }
     // End Method 
 
+    public function AddAssistants(){
+     return view('admin.backend.assistant.add_assistant');
+    }
+    // End Method 
+
 
 
 
