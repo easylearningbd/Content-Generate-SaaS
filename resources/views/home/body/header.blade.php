@@ -60,7 +60,15 @@
                 </div>
                 <ul class="nk-menu-buttons flex-lg-row-reverse">
                     <li><a href="#" class="btn btn-primary">Start Writing</a></li>
-                    <li><a class="link link-dark" href="login.html">Login </a></li>
+   <li>
+    @if (auth()->check())
+        <a target="/blank" class="link link-dark" href="{{ auth()->user()->role === 'admin' ? route('admin.dashboard') : route('dashboard') }}">
+        {{ auth()->user()->name }} Dashboard    
+        </a>
+    @else 
+    <a class="link link-dark" href="{{ route('login') }}">Login </a>
+    @endif 
+    </li>
                 </ul><!-- .nk-menu-buttons -->
             </nav><!-- .nk-header-menu -->
         </div><!-- .nk-header-wrap -->
@@ -69,7 +77,7 @@
          @include('home.layout.slider')   
          
         </header><!-- .nk-header -->
-        
+
 <script type="text/javascript">
 
 document.addEventListener('DOMContentLoaded', () => {
