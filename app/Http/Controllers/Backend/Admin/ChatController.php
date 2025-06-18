@@ -115,11 +115,29 @@ class ChatController extends Controller
     $conversationId = $latestConversation ? $latestConversation->conversation_id ?? $latestConversation->id : null;
 
     /// API Call to generate Response From here 
-    
 
+    $response = OpenAI::chat()->create([
+        'model' => 'gpt-3.5-turbo',
+        'messages' => [
+            ['role' => 'system', 'content' => $assistant->instructions],
+            ['role' => 'user', 'content' => $userMessage ],
+        ],
+    ]);
 
+    $aiResponse = $response->choices[0]->message->content;
 
+    $conversation = ChatConversation::create([
+        'assistant_id' => $assistantId,
+        'user_id' => Auth::id(),
+        'message' => $userMessage,
+        'response' => $aiResponse,
+        'conversation_id' => $conversationId ?? null,
+    ]);
 
+    if (!$conversationId) {
+        $conversation->update(['conversation_id' =>  $conversation->id]);
+    }
+    return redirect()->route('chat-assistants.chat',['assistantId' => $assistantId]);
   }
    //End Method 
 
