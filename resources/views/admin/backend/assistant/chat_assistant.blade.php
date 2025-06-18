@@ -19,7 +19,7 @@
         <a href="{{ route('chat-assistants.new',['assistantId' => $assistant->id]) }}" class="btn btn-primary w-100 rounded-0"> + New Conversation </a>
         <div class="list-group list-group-flush">
             @foreach ($conversations as $conv)
-            <a href="#" class="list-group-item list-group-item-action {{ $selectedConversation && ($selectedConversation->conversation_id ?? $selectedConversation->id) == ($conv->conversation_id ?? $conv->id) ? 'active' : '' }}">
+            <a href="{{ route('chat-assistants.select',['assistantId' => $assistant->id, 'conversationId' => $conv->conversation_id ?? $conv->id ]) }}" class="list-group-item list-group-item-action {{ $selectedConversation && ($selectedConversation->conversation_id ?? $selectedConversation->id) == ($conv->conversation_id ?? $conv->id) ? 'active' : '' }}">
 
             <div class="d-flex w-100 justify-content-between">
                 <h6 class="mb-1 text-primary">Conversation</h6>

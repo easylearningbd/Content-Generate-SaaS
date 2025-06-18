@@ -126,6 +126,7 @@ Route::get('/dashboard', function () {
     Route::get('/chat-assistants/chat/{assistantId}', 'ChatAssistants')->name('chat-assistants.chat');
     Route::post('/chat-assistants/send/{assistantId}', 'ChatSendMessage')->name('chat-assistants.send');
     Route::get('/chat-assistants/new/{assistantId}', 'StartNewConversation')->name('chat-assistants.new');
+    Route::get('/chat-assistants/{assistantId}/conversation/{conversationId}', 'SelecteConversation')->name('chat-assistants.select');
     
      
   });
