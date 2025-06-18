@@ -16,7 +16,7 @@
                     <h5 class="mb-0">Conversations</h5> 
                 </div>
     <div class="card-body p-0">
-        <a href="#" class="btn btn-primary w-100 rounded-0"> + New Conversation </a>
+        <a href="{{ route('chat-assistants.new',['assistantId' => $assistant->id]) }}" class="btn btn-primary w-100 rounded-0"> + New Conversation </a>
         <div class="list-group list-group-flush">
             @foreach ($conversations as $conv)
             <a href="#" class="list-group-item list-group-item-action {{ $selectedConversation && ($selectedConversation->conversation_id ?? $selectedConversation->id) == ($conv->conversation_id ?? $conv->id) ? 'active' : '' }}">

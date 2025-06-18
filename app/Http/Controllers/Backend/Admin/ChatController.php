@@ -141,6 +141,25 @@ class ChatController extends Controller
   }
    //End Method 
 
+   public function StartNewConversation($assistantId){
+
+    $assistant = ChatAssistant::findOrFail($assistantId);
+
+    $newConversation = ChatConversation::create([
+        'assistant_id' => $assistantId,
+        'user_id' => Auth::id(),
+        'message' => 'New Conversation Started',
+        'response' => $assistant->welcome_message,
+        'conversation_id' => null,
+    ]);
+
+    $newConversation->update(['conversation_id' => $newConversation->id]);
+    
+    return redirect()->route('chat-assistants.chat',['assistantId' => $assistantId]);
+
+   }
+     //End Method 
+
 
 
 
