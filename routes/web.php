@@ -124,6 +124,7 @@ Route::get('/dashboard', function () {
     Route::post('/chat-assistants/store', 'StoreAssistants')->name('chat-assistants.store'); 
 
     Route::get('/chat-assistants/chat/{assistantId}', 'ChatAssistants')->name('chat-assistants.chat');
+    Route::post('/chat-assistants/send/{assistantId}', 'ChatSendMessage')->name('chat-assistants.send');
     
      
   });

@@ -49,7 +49,7 @@
                     <div class="d-flex {{ $msg->user_id == Auth::id() ? 'justify-content-end' : 'justifuy-content-start'}} ">
                         <div class="p-2 rounded" style="max-width: 70%">
                             <strong class="d-block mb-1">
-                                {{ $msg->user_id == Auth::id() ? 'You' : $$assistant->name }}
+                                {{ $msg->user_id == Auth::id() ? 'You' : $assistant->name }}
                             </strong>
                     <p class="mb-1">
                         {{ $msg->message }}
@@ -70,8 +70,8 @@
             </div>
 
         <div class="card-footer bg-white border-top">
-            <form action="" method="post" class="input-group">
-                @csrf
+            <form action="{{ route('chat-assistants.send',['assistantId' => $assistant->id]) }}" method="post" class="input-group">
+            @csrf
             <input type="text" name="message" class="form-control border-secondary" placeholder="Type your message.." required>
             <button type="submit" class="btn btn-primary">Send</button>
             </form> 

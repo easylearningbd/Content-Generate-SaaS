@@ -100,6 +100,29 @@ class ChatController extends Controller
    }
     //End Method 
 
+  public function ChatSendMessage(Request $request,$assistantId){
+
+    $request->validate(['message' => 'required|string' ]);
+    $assistant = ChatAssistant::findOrFail($assistantId);
+    $userMessage = $request->message;
+
+    /// Determine the latest conversation_id or start new one.
+    $latestConversation = ChatConversation::where('assistant_id',$assistantId)
+            ->where('user_id',Auth::id())
+            ->latest('created_at')
+            ->first();
+
+    $conversationId = $latestConversation ? $latestConversation->conversation_id ?? $latestConversation->id : null;
+
+    /// API Call to generate Response From here 
+    
+
+
+
+
+  }
+   //End Method 
+
 
 
 
