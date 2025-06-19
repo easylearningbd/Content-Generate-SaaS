@@ -10,110 +10,36 @@
             </div>
         </div>
     </div><!-- .section-head -->
+
+@php
+    $templates = App\Models\Template::latest()->limit(6)->get();
+@endphp
+
     <div class="section-content">
         <div class="row text-center g-gs">
-            <div class="col-md-6 col-xl-4">
-                <div class="card rounded-4 border-0 shadow-tiny h-100">
-                    <div class="card-body">
-                        <div class="feature">
-                            <div class="feature-media">
-                                <div class="media media-middle media-xl text-bg-primary-soft rounded-4">
-                                    <em class="icon ni ni-book-read"></em>
-                                </div>
-                            </div>
-                            <div class="feature-text">
-                                <h4 class="title">Blog Post &amp; Articles</h4>
-                                <p>Generate optimized blog post and articles to get organic traffic - making you visible to the world. </p>
-                            </div>
-                        </div>
+
+@foreach ($templates as $item) 
+
+<div class="col-md-6 col-xl-4">
+    <div class="card rounded-4 border-0 shadow-tiny h-100">
+        <div class="card-body">
+            <div class="feature">
+                <div class="feature-media">
+                    <div class="media media-middle media-xl text-bg-primary-soft rounded-4">
+                        <em class="{{ $item->icon }}"></em>
                     </div>
                 </div>
-            </div><!-- .col -->
-            <div class="col-md-6 col-xl-4">
-                <div class="card rounded-4 border-0 shadow-tiny h-100">
-                    <div class="card-body">
-                        <div class="feature">
-                            <div class="feature-media">
-                                <div class="media media-middle media-xl text-bg-primary-soft rounded-4">
-                                    <em class="icon ni ni-card-view"></em>
-                                </div>
-                            </div>
-                            <div class="feature-text">
-                                <h4 class="title">Product Description</h4>
-                                <p>Create a perfect description for your products to engage your customers to click and buy.</p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="feature-text">
+                    <h4 class="title">{{ $item->title }}</h4>
+                    <p>{{ $item->description }} </p>
                 </div>
-            </div><!-- .col -->
-            <div class="col-md-6 col-xl-4">
-                <div class="card rounded-4 border-0 shadow-tiny h-100">
-                    <div class="card-body">
-                        <div class="feature">
-                            <div class="feature-media">
-                                <div class="media media-middle media-xl text-bg-primary-soft rounded-4">
-                                    <em class="icon ni ni-facebook-f"></em>
-                                </div>
-                            </div>
-                            <div class="feature-text">
-                                <h4 class="title">Social Media Ads</h4>
-                                <p>Create ads copies for your social media - make an impact with your online marketing campaigns.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- .col -->
-            <div class="col-md-6 col-xl-4">
-                <div class="card rounded-4 border-0 shadow-tiny h-100">
-                    <div class="card-body">
-                        <div class="feature">
-                            <div class="feature-media">
-                                <div class="media media-middle media-xl text-bg-primary-soft rounded-4">
-                                    <em class="icon ni ni-grid-plus"></em>
-                                </div>
-                            </div>
-                            <div class="feature-text">
-                                <h4 class="title">Product Benefits</h4>
-                                <p>Create a bullet point list of your product benefits that appeal to your customers to purchase.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- .col -->
-            <div class="col-md-6 col-xl-4">
-                <div class="card rounded-4 border-0 shadow-tiny h-100">
-                    <div class="card-body">
-                        <div class="feature">
-                            <div class="feature-media">
-                                <div class="media media-middle media-xl text-bg-primary-soft rounded-4">
-                                    <em class="icon ni ni-layout2"></em>
-                                </div>
-                            </div>
-                            <div class="feature-text">
-                                <h4 class="title">Landing Page Content</h4>
-                                <p>Write very attractive headlines, slogans or paragraph for your landing page of your website.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- .col -->
-            <div class="col-md-6 col-xl-4">
-                <div class="card rounded-4 border-0 shadow-tiny h-100">
-                    <div class="card-body">
-                        <div class="feature">
-                            <div class="feature-media">
-                                <div class="media media-middle media-xl text-bg-primary-soft rounded-4">
-                                    <em class="icon ni ni-loader"></em>
-                                </div>
-                            </div>
-                            <div class="feature-text">
-                                <h4 class="title">Suggest Improvements</h4>
-                                <p>Need to improve your existing content? Our AI will rewrite and improve the content for you.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- .col -->
+            </div>
+        </div>
+    </div>
+</div><!-- .col -->
+@endforeach
+
+             
         </div><!-- .row -->
     </div><!-- .section-content -->
 </div><!-- .container -->
