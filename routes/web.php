@@ -144,6 +144,11 @@ Route::controller(HomeController::class)->group(function(){
 
 });
 /// End Admin Routes 
+
+
+/////////// Assess for All ///////////////////
+ Route::post('/update-slider/{id}', [HomeController::class, 'UpdateSliders']);
+ Route::post('/update-slider-image/{id}', [HomeController::class, 'UpdateSliderImage']);
  
 
 Route::middleware('auth')->group(function () {
