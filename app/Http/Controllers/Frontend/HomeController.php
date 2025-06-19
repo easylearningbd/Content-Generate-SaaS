@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Slider;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
+use App\Models\Heading;
 
 class HomeController extends Controller
 {
@@ -105,6 +106,13 @@ class HomeController extends Controller
         return response()->json(['success' =>  false, 'message' => 'Image upload Failed'],400);
     }
      //End Method 
+
+   public function AllHeading(){
+    $heading = Heading::latest()->get();
+    return view('admin.backend.heading.all_heading',compact('heading'));
+   }
+   //End Method 
+
 
 
 

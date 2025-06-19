@@ -118,6 +118,27 @@
                 </a>
             </li>
 
+              <li class="nk-menu-item has-sub">
+                <a href="#" class="nk-menu-link nk-menu-toggle">
+                    <span class="nk-menu-icon">
+                        <em class="icon ni ni-folder-list"></em>
+                    </span>
+                    <span class="nk-menu-text">Home Setup</span>
+                </a>
+                <ul class="nk-menu-sub">
+                    <li class="nk-menu-item">
+                        <a href="{{ route('all.heading') }}" class="nk-menu-link">
+                            <span class="nk-menu-text">All Heading</span>
+                        </a>
+                    </li>
+                    <li class="nk-menu-item">
+                        <a href="{{ route('add.plans') }}" class="nk-menu-link">
+                            <span class="nk-menu-text">Add Plans</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
 
             <li class="nk-menu-item">
                 <a href="{{ route('admin.logout') }}" class="nk-menu-link">

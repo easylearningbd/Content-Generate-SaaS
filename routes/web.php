@@ -141,6 +141,12 @@ Route::controller(HomeController::class)->group(function(){
     
   });
 
+  Route::controller(HomeController::class)->group(function(){
+    Route::get('/all/heading', 'AllHeading')->name('all.heading'); 
+    
+    
+  });
+
 
 });
 /// End Admin Routes 
