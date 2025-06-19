@@ -14,6 +14,8 @@ use App\Http\Controllers\Backend\Client\UserController;
 use App\Http\Controllers\Backend\Client\UserTemplateController;
 use App\Http\Controllers\Backend\Client\CheckoutController;
 
+use App\Http\Controllers\Frontend\HomeController;
+
 Route::get('/', function () {
     return view('home.index');
 });
@@ -133,7 +135,10 @@ Route::get('/dashboard', function () {
 
 
 
-
+Route::controller(HomeController::class)->group(function(){
+    Route::get('/home/slider', 'HomeSlider')->name('home.slider'); 
+    
+  });
 
 
 });
