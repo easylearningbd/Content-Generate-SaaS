@@ -11,7 +11,7 @@
             </div>
             <div class="nk-block-head-content">
                 <ul class="nk-block-tools">
-                    <li><a class="btn btn-primary" href="{{ route('add.plans') }}"><em class="icon ni ni-plus"></em><span>Add Heading</span></a></li>
+                    <li><a class="btn btn-primary" href="{{ route('add.heading') }}"><em class="icon ni ni-plus"></em><span>Add Heading</span></a></li>
                 </ul>
             </div>
         </div>

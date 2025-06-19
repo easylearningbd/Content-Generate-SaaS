@@ -143,6 +143,8 @@ Route::controller(HomeController::class)->group(function(){
 
   Route::controller(HomeController::class)->group(function(){
     Route::get('/all/heading', 'AllHeading')->name('all.heading'); 
+    Route::get('/add/heading', 'AddHeading')->name('add.heading');
+    Route::post('/store/heading', 'StoreHeading')->name('store.heading'); 
     
     
   });
