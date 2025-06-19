@@ -137,6 +137,7 @@ Route::get('/dashboard', function () {
 
 Route::controller(HomeController::class)->group(function(){
     Route::get('/home/slider', 'HomeSlider')->name('home.slider'); 
+    Route::post('/update/slider', 'UpdateSlider')->name('update.slider');
     
   });
 

@@ -21,8 +21,10 @@
         <div class="card shadown-none">
             <div class="card-body">
      
-     <form action="{{ route('store.plans') }}" method="post" enctype="multipart/form-data">
-        @csrf   
+     <form action="{{ route('update.slider') }}" method="post" enctype="multipart/form-data">
+        @csrf 
+        
+    <input type="hidden" name="id" value="{{ $slider->id }}">
 
      <div class="row g-3 gx-gs">
                     
