@@ -24,7 +24,7 @@
             <nav class="nk-header-menu nk-menu">
                 <ul class="nk-menu-list mx-auto">
                         <li class="nk-menu-item">
-                        <a href="usecase.html" class="nk-menu-link">
+                        <a href="{{ url('/') }}" class="nk-menu-link">
                             <span class="nk-menu-text">Home</span>
                         </a>
                     </li>

@@ -13,212 +13,38 @@
             </div>
         </div>
     </div><!-- .section-head -->
+   
+   @php
+    $templates = App\Models\Template::latest()->limit(6)->get();
+   @endphp
+
     <div class="section-content">
         <div class="row text-center g-gs">
-            <div class="col-md-6 col-xl-4">
-                <a href="usecase-details.html" class="card card-hover-translate rounded-4 border-0 shadow-tiny h-100 ">
-                    <div class="card-body">
-                        <div class="feature">
-                            <div class="feature-media">
-                                <div class="media media-middle media-xl text-bg-success-soft rounded-pill">
-                                    <em class="icon ni ni-globe"></em>
-                                </div>
-                            </div>
-                            <div class="feature-text text-base">
-                                <h3 class="title">Website Copy &amp; SEO</h3>
-                                <p>Missing inspiration for your Landing Page? Generate headlines, meta tags.</p>
-                            </div>
-                        </div>
+            
+            
+    @foreach ($templates as $item) 
+
+<div class="col-md-6 col-xl-4">
+    <div class="card rounded-4 border-0 shadow-tiny h-100">
+        <div class="card-body">
+            <div class="feature">
+                <div class="feature-media">
+                    <div class="media media-middle media-xl text-bg-primary-soft rounded-4">
+                        <em class="{{ $item->icon }}"></em>
                     </div>
-                </a><!-- .card -->
-            </div><!-- .col -->
-            <div class="col-md-6 col-xl-4">
-                <a href="usecase-details.html" class="card card-hover-translate rounded-4 border-0 shadow-tiny h-100 ">
-                    <div class="card-body">
-                        <div class="feature">
-                            <div class="feature-media">
-                                <div class="media media-middle media-xl text-bg-info-soft rounded-pill">
-                                    <em class="icon ni ni-flag"></em>
-                                </div>
-                            </div>
-                            <div class="feature-text text-base">
-                                <h3 class="title">Social Media &amp; Ads</h3>
-                                <p>Write Facebook or Google ads, Youtube video descriptions or titles.</p>
-                            </div>
-                        </div>
-                    </div>
-                </a><!-- .card -->
-            </div><!-- .col -->
-            <div class="col-md-6 col-xl-4">
-                <a href="usecase-details.html" class="card card-hover-translate rounded-4 border-0 shadow-tiny h-100 ">
-                    <div class="card-body">
-                        <div class="feature">
-                            <div class="feature-media">
-                                <div class="media media-middle media-xl text-bg-primary-soft rounded-pill">
-                                    <em class="icon ni ni-edit"></em>
-                                </div>
-                            </div>
-                            <div class="feature-text text-base">
-                                <h3 class="title">Blog Section Writing</h3>
-                                <p>Explain to you how all this mistak idea of pain complete we den ounce with righteous</p>
-                            </div>
-                        </div>
-                    </div>
-                </a><!-- .card -->
-            </div><!-- .col -->
-            <div class="col-md-6 col-xl-4">
-                <a href="usecase-details.html" class="card card-hover-translate rounded-4 border-0 shadow-tiny h-100 ">
-                    <div class="card-body">
-                        <div class="feature">
-                            <div class="feature-media">
-                                <div class="media media-middle media-xl text-bg-warning-soft rounded-pill">
-                                    <em class="icon ni ni-signal"></em>
-                                </div>
-                            </div>
-                            <div class="feature-text text-base">
-                                <h3 class="title">Digital Ad Copy</h3>
-                                <p>Write creative and original advertisement copies for social media channels.</p>
-                            </div>
-                        </div>
-                    </div>
-                </a><!-- .card -->
-            </div><!-- .col -->
-            <div class="col-md-6 col-xl-4">
-                <a href="usecase-details.html" class="card card-hover-translate rounded-4 border-0 shadow-tiny h-100 ">
-                    <div class="card-body">
-                        <div class="feature">
-                            <div class="feature-media">
-                                <div class="media media-middle media-xl text-bg-purple-soft rounded-pill">
-                                    <em class="icon ni ni-percent"></em>
-                                </div>
-                            </div>
-                            <div class="feature-text text-base">
-                                <h3 class="title">Discount and Sales</h3>
-                                <p>Pass your request as a command and let AI do the work for you magically. </p>
-                            </div>
-                        </div>
-                    </div>
-                </a><!-- .card -->
-            </div><!-- .col -->
-            <div class="col-md-6 col-xl-4">
-                <a href="usecase-details.html" class="card card-hover-translate rounded-4 border-0 shadow-tiny h-100 ">
-                    <div class="card-body">
-                        <div class="feature">
-                            <div class="feature-media">
-                                <div class="media media-middle media-xl text-bg-danger-soft rounded-pill">
-                                    <em class="icon ni ni-briefcase"></em>
-                                </div>
-                            </div>
-                            <div class="feature-text text-base">
-                                <h3 class="title">Job Description</h3>
-                                <p>Create engaging job descriptions for any position to attract the best candidates</p>
-                            </div>
-                        </div>
-                    </div>
-                </a><!-- .card -->
-            </div><!-- .col -->
-            <div class="col-md-6 col-xl-4">
-                <a href="usecase-details.html" class="card card-hover-translate rounded-4 border-0 shadow-tiny h-100 ">
-                    <div class="card-body">
-                        <div class="feature">
-                            <div class="feature-media">
-                                <div class="media media-middle media-xl text-bg-primary-soft rounded-pill">
-                                    <em class="icon ni ni-puzzle"></em>
-                                </div>
-                            </div>
-                            <div class="feature-text text-base">
-                                <h3 class="title">Event Promotion</h3>
-                                <p>Increase your sign ups and generate more leads</p>
-                            </div>
-                        </div>
-                    </div>
-                </a><!-- .card -->
-            </div><!-- .col -->
-            <div class="col-md-6 col-xl-4">
-                <a href="usecase-details.html" class="card card-hover-translate rounded-4 border-0 shadow-tiny h-100 ">
-                    <div class="card-body">
-                        <div class="feature">
-                            <div class="feature-media">
-                                <div class="media media-middle media-xl text-bg-success-soft rounded-pill">
-                                    <em class="icon ni ni-comments"></em>
-                                </div>
-                            </div>
-                            <div class="feature-text text-base">
-                                <h3 class="title">Testimonial &amp; Review</h3>
-                                <p>Quickly write candid testimonials and reviews for people and services</p>
-                            </div>
-                        </div>
-                    </div>
-                </a><!-- .card -->
-            </div><!-- .col -->
-            <div class="col-md-6 col-xl-4">
-                <a href="usecase-details.html" class="card card-hover-translate rounded-4 border-0 shadow-tiny h-100 ">
-                    <div class="card-body">
-                        <div class="feature">
-                            <div class="feature-media">
-                                <div class="media media-middle media-xl text-bg-info-soft rounded-pill">
-                                    <em class="icon ni ni-tags"></em>
-                                </div>
-                            </div>
-                            <div class="feature-text text-base">
-                                <h3 class="title">Keywords Extractor</h3>
-                                <p>Identify main keywords, keyphrases, and questions in any text</p>
-                            </div>
-                        </div>
-                    </div>
-                </a><!-- .card -->
-            </div><!-- .col -->
-            <div class="col-md-6 col-xl-4">
-                <a href="usecase-details.html" class="card card-hover-translate rounded-4 border-0 shadow-tiny h-100 ">
-                    <div class="card-body">
-                        <div class="feature">
-                            <div class="feature-media">
-                                <div class="media media-middle media-xl text-bg-info-soft rounded-pill">
-                                    <em class="icon ni ni-video"></em>
-                                </div>
-                            </div>
-                            <div class="feature-text text-base">
-                                <h3 class="title">Video Description</h3>
-                                <p>Create engaging job descriptions for any position to attract the best candidates</p>
-                            </div>
-                        </div>
-                    </div>
-                </a><!-- .card -->
-            </div><!-- .col -->
-            <div class="col-md-6 col-xl-4">
-                <a href="usecase-details.html" class="card card-hover-translate rounded-4 border-0 shadow-tiny h-100 ">
-                    <div class="card-body">
-                        <div class="feature">
-                            <div class="feature-media">
-                                <div class="media media-middle media-xl text-bg-warning-soft rounded-pill">
-                                    <em class="icon ni ni-file-text"></em>
-                                </div>
-                            </div>
-                            <div class="feature-text text-base">
-                                <h3 class="title">Keywords Generator</h3>
-                                <p>Come up with related keywords, keyphrases, and questions using AI writing assistant</p>
-                            </div>
-                        </div>
-                    </div>
-                </a><!-- .card -->
-            </div><!-- .col -->
-            <div class="col-md-6 col-xl-4">
-                <a href="usecase-details.html" class="card card-hover-translate rounded-4 border-0 shadow-tiny h-100 ">
-                    <div class="card-body">
-                        <div class="feature">
-                            <div class="feature-media">
-                                <div class="media media-middle media-xl text-bg-pink-soft rounded-pill">
-                                    <em class="icon ni ni-cart"></em>
-                                </div>
-                            </div>
-                            <div class="feature-text text-base">
-                                <h3 class="title">eCommerce Copy</h3>
-                                <p>Finding Product Names or Product Descriptions can be very time consuming. </p>
-                            </div>
-                        </div>
-                    </div>
-                </a><!-- .card -->
-            </div><!-- .col -->
+                </div>
+                <div class="feature-text">
+                    <h4 class="title">{{ $item->title }}</h4>
+                    <p>{{ $item->description }} </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- .col -->
+@endforeach
+
+
+             
         </div><!-- .row -->
     </div><!-- .section-content -->
 </div><!-- .container -->
