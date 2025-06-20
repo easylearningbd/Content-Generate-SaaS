@@ -170,12 +170,17 @@ Route::controller(HomeController::class)->group(function(){
  
 
   Route::controller(HomeController::class)->group(function(){
-    Route::post('/update-started/{id}', 'UpdateStarted'); 
-   
-    
-    
+    Route::post('/update-started/{id}', 'UpdateStarted');  
   });
 
+
+  ///////////// HOME FRONTEND //////////
+
+Route::controller(HomeController::class)->group(function(){
+    Route::get('/usecase', 'UseCase')->name('usecase');  
+  });
+
+ 
 
 
 

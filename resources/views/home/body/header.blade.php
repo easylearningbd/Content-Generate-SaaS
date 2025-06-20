@@ -29,7 +29,7 @@
                         </a>
                     </li>
                     <li class="nk-menu-item">
-                        <a href="usecase.html" class="nk-menu-link">
+                        <a href="{{ route('usecase') }}" class="nk-menu-link">
                             <span class="nk-menu-text">Use Cases</span>
                         </a>
                     </li>

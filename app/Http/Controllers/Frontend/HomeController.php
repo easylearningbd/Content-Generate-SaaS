@@ -207,8 +207,11 @@ public function AllQuestions(){
 
    }
    //End Method 
-
-
+ 
+   public function UseCase(){
+    return view('home.page.use_case');
+   }
+   //End Method 
 
 
 }
