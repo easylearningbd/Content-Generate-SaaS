@@ -5,8 +5,14 @@
         <div class="row justify-content-center text-center">
             <div class="col-lg-9 col-xl-8 col-xxl-7">
                 <h6 class="overline-title text-primary">How it works</h6>
-                <h2 class="title">Instruct to our AI and generate copy</h2>
-                <p class="lead">Give our AI a few descriptions and we'll automatically create blog articles, product descriptions and more for you within just few second.</p>
+      @php
+    $heading = App\Models\Heading::find(2);
+    @endphp   
+
+   <h2 class="title editable-title" contenteditable={{ auth()->check() && auth()->user()->role === 'admin' ? 'true' : 'false'  }} data-id="{{ $heading->id }}" > {{ $heading->title }}</h2>
+
+    <p class="lead editable-description" contenteditable={{ auth()->check() && auth()->user()->role === 'admin' ? 'true' : 'false'  }} data-id="{{ $heading->id }}" >{{ $heading->description }}</p>
+
             </div>
         </div>
     </div><!-- .section-head -->
@@ -75,3 +81,51 @@
     </div><!-- .section-content -->
 </div><!-- .container -->
 </section><!-- .section -->
+
+{{-- CSRF Token  --}}
+  <meta name="csrf-token" content="{{ csrf_token() }}" >
+
+  <script>
+   document.addEventListener("DOMContentLoaded", function(){
+     
+     function saveChanges(element) {
+       let appId = element.dataset.id;
+       let field = element.classList.contains("editable-title") ? "title" : "description";
+       let newValue = element.innerText.trim();
+
+       fetch(`/update-started/${appId}`,{
+         method: "POST",
+         headers: {
+           "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),"Content-Type": "application/json"
+         },
+         body: JSON.stringify({ [field]:newValue })
+       })
+       .then(response => response.json())
+       .then(data => {
+         if(data.success) {
+           console.log(`${field} updated successfully`);
+         }
+       })
+       .catch(error => console.error("Error:", error)); 
+     }
+
+     // Auto save on Enter Key
+     document.addEventListener("keydown", function(e){
+       if (e.key === "Enter") {
+         e.preventDefault();
+         saveChanges(e.target);
+       }
+     });
+
+     // Auto save on losing foucs
+     document.querySelectorAll(".editable-title, .editable-description").forEach(el => {
+       el.addEventListener("blur", function() {
+         saveChanges(el);
+       });
+     }); 
+     
+     /// IMAGE UPLOADED FUNCTION START
+  
+   
+   });
+  </script>
