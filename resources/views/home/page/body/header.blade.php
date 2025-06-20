@@ -44,7 +44,7 @@
                     </li>
 
                     <li class="nk-menu-item">
-                        <a href="usecase.html" class="nk-menu-link">
+                        <a href="{{ route('contact') }}" class="nk-menu-link">
                             <span class="nk-menu-text">Contact</span>
                         </a>
                     </li>

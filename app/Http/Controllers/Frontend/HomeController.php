@@ -223,5 +223,10 @@ public function AllQuestions(){
    }
    //End Method 
 
+    public function Contact(){
+    return view('home.page.contact');
+   }
+   //End Method 
+
 
 }
