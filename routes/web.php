@@ -152,6 +152,9 @@ Route::controller(HomeController::class)->group(function(){
     Route::get('/all/questions', 'AllQuestions')->name('all.questions'); 
     Route::get('/add/questions', 'AddQuestions')->name('add.questions');
     Route::post('/store/questions', 'StoreQuestions')->name('store.questions'); 
+    Route::get('/edit/questions/{id}', 'EditQuestions')->name('edit.questions');
+    Route::post('/update/questions', 'UpdateQuestions')->name('update.questions');
+    Route::get('/delete/questions/{id}', 'DeleteQuestions')->name('delete.questions');
      
   });
 

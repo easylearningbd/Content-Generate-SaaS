@@ -171,6 +171,43 @@ public function AllQuestions(){
    }
    //End Method 
 
+   public function EditQuestions($id){
+    $question = Questions::find($id);
+    return view('admin.backend.question.edit_question',compact('question'));
+   }
+   //End Method 
+
+   public function UpdateQuestions(Request $request){
+
+    $que_id = $request->id;
+
+        Questions::find($que_id)->update([
+            'title' => $request->title,
+            'description' => $request->description,
+        ]);
+
+    $notification = array(
+        'message' => 'Questions Updated Successfully',
+        'alert-type' => 'success'
+     ); 
+     return redirect()->route('all.questions')->with($notification); 
+
+   }
+   //End Method 
+
+   public function DeleteQuestions($id){
+
+    Questions::find($id)->delete();
+
+    $notification = array(
+        'message' => 'Questions Deleted Successfully',
+        'alert-type' => 'success'
+     ); 
+     return redirect()->back()->with($notification); 
+
+   }
+   //End Method 
+
 
 
 
