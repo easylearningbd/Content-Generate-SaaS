@@ -213,5 +213,10 @@ public function AllQuestions(){
    }
    //End Method 
 
+   public function Features(){
+    return view('home.page.features');
+   }
+   //End Method 
+
 
 }
