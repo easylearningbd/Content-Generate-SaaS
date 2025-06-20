@@ -218,5 +218,10 @@ public function AllQuestions(){
    }
    //End Method 
 
+   public function Pricing(){
+    return view('home.page.pricing');
+   }
+   //End Method 
+
 
 }

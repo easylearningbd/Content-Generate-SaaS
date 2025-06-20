@@ -179,6 +179,7 @@ Route::controller(HomeController::class)->group(function(){
 Route::controller(HomeController::class)->group(function(){
     Route::get('/usecase', 'UseCase')->name('usecase'); 
     Route::get('/features', 'Features')->name('features'); 
+    Route::get('/pricing', 'Pricing')->name('pricing');
   });
 
  

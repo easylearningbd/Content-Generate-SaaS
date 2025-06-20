@@ -38,7 +38,7 @@
                     </li>
                 
                     <li class="nk-menu-item">
-                        <a href="pricing.html" class="nk-menu-link">
+                        <a href="{{ route('pricing') }}" class="nk-menu-link">
                             <span class="nk-menu-text">Pricing</span>
                         </a>
                     </li>
