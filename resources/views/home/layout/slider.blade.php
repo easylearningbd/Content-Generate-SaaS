@@ -1,7 +1,7 @@
 @php
     $slider = App\Models\Slider::find(1);
 @endphp
-
+ 
 <div class="nk-hero pt-xl-5">
 <div class="container">
     <div class="row justify-content-center text-center">

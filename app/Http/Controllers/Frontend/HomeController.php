@@ -135,7 +135,12 @@ class HomeController extends Controller
    //End Method 
 
 
-
+ public function UpdateStarted(Request $request, $id){
+        $heading = Heading::findOrFail($id);
+        $heading->update($request->only(['title','description']));
+        return response()->json(['success' => true, 'message' => 'Updated Successfully']); 
+    }
+    //End Method 
 
 
 }
