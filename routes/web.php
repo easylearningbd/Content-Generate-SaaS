@@ -181,6 +181,8 @@ Route::controller(HomeController::class)->group(function(){
     Route::get('/features', 'Features')->name('features'); 
     Route::get('/pricing', 'Pricing')->name('pricing');
     Route::get('/contact', 'Contact')->name('contact');
+
+    Route::post('/store/contact', 'StoreContact')->name('store.contact');
   });
 
  

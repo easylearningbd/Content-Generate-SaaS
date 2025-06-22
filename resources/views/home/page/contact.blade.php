@@ -48,49 +48,51 @@
                 <div class="card border-0 shadow-sm rounded-4">
                     <div class="card-body">
                         <h3 class="title fw-medium mb-4">Please feel free to contact us using form below</h3>
-                        <form data-action="form/message-form.php" method="post" class="form-submit-init">
-                            <div class="row g-4">
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <div class="form-control-wrap">
-                                            <input type="text" name="user-name" class="form-control form-control-lg" placeholder="Your Name" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- .col -->
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <div class="form-control-wrap">
-                                            <input type="email" name="user-email" class="form-control form-control-lg" placeholder="Your Email Address" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- .col -->
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <div class="form-control-wrap">
-                                            <input type="text" name="user-subject" class="form-control form-control-lg" placeholder="Subject" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- .col -->
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <div class="form-control-wrap">
-                                            <textarea name="user-message" class="form-control form-control-lg" placeholder="Enter your message" required></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- .col -->
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <button class="btn btn-primary" type="submit" id="submit-btn">Send Message</button>
-                                    </div>
-                                    <div class="form-result mt-4"></div>
-                                </div>
-                            </div>
-                            <!-- .row -->
-                        </form>
+    <form action="{{ route('store.contact') }}"  method="post" >
+        @csrf
+        
+        <div class="row g-4">
+            <div class="col-12">
+                <div class="form-group">
+                    <div class="form-control-wrap">
+                        <input type="text" name="name" class="form-control form-control-lg" placeholder="Your Name" required>
+                    </div>
+                </div>
+            </div>
+            <!-- .col -->
+            <div class="col-12">
+                <div class="form-group">
+                    <div class="form-control-wrap">
+                        <input type="email" name="email" class="form-control form-control-lg" placeholder="Your Email Address" required>
+                    </div>
+                </div>
+            </div>
+            <!-- .col -->
+            <div class="col-12">
+                <div class="form-group">
+                    <div class="form-control-wrap">
+                        <input type="text" name="subject" class="form-control form-control-lg" placeholder="Subject" required>
+                    </div>
+                </div>
+            </div>
+            <!-- .col -->
+            <div class="col-12">
+                <div class="form-group">
+                    <div class="form-control-wrap">
+                        <textarea name="message" class="form-control form-control-lg" placeholder="Enter your message" required></textarea>
+                    </div>
+                </div>
+            </div>
+            <!-- .col -->
+            <div class="col-12">
+                <div class="form-group">
+                    <button class="btn btn-primary" type="submit" >Send Message</button>
+                </div>
+                <div class="form-result mt-4"></div>
+            </div>
+        </div>
+        <!-- .row -->
+    </form>
                     </div>
                 </div>
             </div>

@@ -12,6 +12,7 @@ use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 use App\Models\Heading;
 use App\Models\Questions;
+use App\Models\Contact;
 
 class HomeController extends Controller
 {
@@ -225,6 +226,26 @@ public function AllQuestions(){
 
     public function Contact(){
     return view('home.page.contact');
+   }
+   //End Method 
+
+
+   public function StoreContact(Request $request){
+        
+    Contact::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'subject' => $request->subject,
+            'message' => $request->message,
+            
+        ]);
+
+    $notification = array(
+        'message' => 'Contact Inserted Successfully',
+        'alert-type' => 'success'
+     ); 
+     return redirect()->back()->with($notification); 
+
    }
    //End Method 
 
