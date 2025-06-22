@@ -249,5 +249,23 @@ public function AllQuestions(){
    }
    //End Method 
 
+   public function ContactMessage(){
+    $contact =  Contact::orderBy('id','desc')->get();
+    return view('admin.backend.contact.all_contact',compact('contact'));
+   }
+    //End Method 
+
+    public function DeleteContactMessage($id){
+
+        Contact::find($id)->delete();
+
+        $notification = array(
+        'message' => 'Contact Deleted Successfully',
+        'alert-type' => 'success'
+     ); 
+     return redirect()->back()->with($notification);  
+    }
+     //End Method 
+
 
 }

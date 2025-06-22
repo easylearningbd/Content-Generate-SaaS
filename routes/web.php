@@ -155,7 +155,9 @@ Route::controller(HomeController::class)->group(function(){
     Route::get('/edit/questions/{id}', 'EditQuestions')->name('edit.questions');
     Route::post('/update/questions', 'UpdateQuestions')->name('update.questions');
     Route::get('/delete/questions/{id}', 'DeleteQuestions')->name('delete.questions');
-     
+
+    Route::get('/contact/message', 'ContactMessage')->name('contact.message');
+    Route::get('/delete/contact/message/{id}', 'DeleteContactMessage')->name('delete.contact.message');
   });
 
 
