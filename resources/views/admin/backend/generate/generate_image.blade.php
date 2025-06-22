@@ -52,11 +52,37 @@
     imageResult.innerHTML = "";
     generateBtn.disabled = true;
 
-    
-
-
+    try {
+        const res = await fetch("/generate-save-image",{
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": "{{ csrf_token() }}"
+            },
+            body: JSON.stringify({prompt})
+        });
         
-    })
+        const data = await res.json();
+
+        if (data.status === "success") {
+            imageResult.innerHTML = `
+            <p class="text-success">${data.message}</p>
+            <img src="${data.image_local_path}" width="500" class="mt-2" />
+            <br>
+            <a href="${data.image_local_path}" download class="btn btn-sm btn-success mt-2"> Download Image </a>
+            `;            
+        } else {
+            alert("Something went wrong");
+        }
+        
+    } catch (error) {
+        alert("Failed to Generate Image ");
+    } finally {
+        loader.style.display = "none";
+        generateBtn.disabled = false;
+    } 
+        
+    });
 </script>
 
 @endsection
