@@ -74,4 +74,19 @@ class GenerateController extends Controller
     // End Method
 
 
+    public function UserGenerateImage(){
+
+        return view('client.backend.generate.generate_image');
+
+    }
+    // End Method
+
+     public function UserAllGenerateImage(){
+        $id = Auth::user()->id;
+        $genimage = GeneratedImage::where('user_id',$id)->orderBy('id','desc')->get();
+        return view('client.backend.generate.all_image',compact('genimage'));
+    }
+    // End Method
+
+
 }
