@@ -165,6 +165,7 @@ Route::controller(HomeController::class)->group(function(){
 
    Route::controller(GenerateController::class)->group(function(){
     Route::get('/generate/image', 'GenerateImage')->name('generate.image'); 
+    Route::get('/all/generate/image', 'AllGenerateImage')->name('all.generate.image'); 
    
   });
 

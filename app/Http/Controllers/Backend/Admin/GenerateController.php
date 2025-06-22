@@ -66,5 +66,12 @@ class GenerateController extends Controller
     }
     // End Method
 
+    public function AllGenerateImage(){
+        // $id = Auth::user()->id;
+        $genimage = GeneratedImage::orderBy('id','desc')->get();
+        return view('admin.backend.generate.all_image',compact('genimage'));
+    }
+    // End Method
+
 
 }
