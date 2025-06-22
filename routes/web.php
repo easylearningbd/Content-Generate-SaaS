@@ -15,6 +15,7 @@ use App\Http\Controllers\Backend\Client\UserTemplateController;
 use App\Http\Controllers\Backend\Client\CheckoutController;
 
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Backend\Admin\GenerateController;
 
 Route::get('/', function () {
     return view('home.index');
@@ -158,6 +159,13 @@ Route::controller(HomeController::class)->group(function(){
 
     Route::get('/contact/message', 'ContactMessage')->name('contact.message');
     Route::get('/delete/contact/message/{id}', 'DeleteContactMessage')->name('delete.contact.message');
+  });
+
+
+
+   Route::controller(GenerateController::class)->group(function(){
+    Route::get('/generate/image', 'GenerateImage')->name('generate.image'); 
+   
   });
 
 
