@@ -178,7 +178,7 @@ Route::controller(HomeController::class)->group(function(){
 
    Route::controller(GenerateController::class)->group(function(){
     Route::get('/generate/audio', 'GenerateAudio')->name('generate.audio'); 
-    // Route::get('/all/generate/image', 'AllGenerateImage')->name('all.generate.image'); 
+    Route::get('/all/generate/audio', 'AllGenerateAudio')->name('all.generate.audio'); 
    
   });
 

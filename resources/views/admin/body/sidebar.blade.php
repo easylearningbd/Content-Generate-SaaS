@@ -129,7 +129,7 @@
                 </a>
             </li>
             <li class="nk-menu-item">
-                <a href="{{ route('all.generate.image') }}" class="nk-menu-link">
+                <a href="{{ route('all.generate.audio') }}" class="nk-menu-link">
                     <span class="nk-menu-text">All Generate Audio  </span>
                 </a>
             </li>
