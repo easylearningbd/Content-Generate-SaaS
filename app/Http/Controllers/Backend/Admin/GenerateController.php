@@ -10,6 +10,7 @@ use OpenAI\Laravel\Facades\OpenAI;
 use App\Models\User;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
+use App\Models\GeneratedAudio; 
 
 class GenerateController extends Controller
 {
@@ -92,6 +93,53 @@ class GenerateController extends Controller
         return view('admin.backend.generate.generate_audio');
     }
     // End Method
+
+
+    public function GenerateAndSaveAudio(Request $request){
+
+        $request->validate([
+            'text' => 'required|string',
+        ]);
+
+        $text = $request->input('text');
+
+        /// Step 1: Generate image using OpenAI
+        $response = OpenAI::audio()->speech([
+            'model' => 'tts-1',
+            'input' => $text,
+            'voice' => 'nova',
+            'response_format' => 'mp3',
+        ]);
+ 
+        // Step 2: Download the image 
+       
+        $fileName = 'tts_' . time() . '_' . Str::random(5) . '.mp3';
+        $savePath = public_path('upload/audio/');
+
+        /// Step 3: Ensure the directory exists
+        if (!File::exists($savePath)) {
+            File::makeDirectory($savePath, 0755, true);
+        }
+
+        // Step 4: Save image to public folder
+        file_put_contents($savePath . $fileName, $response);
+
+        GeneratedAudio::create([
+            'user_id' => Auth::id(),
+            'prompt' => $text,
+            'audio_path' => 'upload/audio/' . $fileName,
+        ]);
+
+        return response()->json([
+            'status' => 'success',
+            'audio_url' => asset('upload/audio/'.$fileName),
+            'message' => 'Audio generated and saved successfully',
+        ]);     
+
+    }
+    // End Method
+
+
 
 
 }

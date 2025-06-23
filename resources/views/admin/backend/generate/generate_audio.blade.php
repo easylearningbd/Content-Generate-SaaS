@@ -68,7 +68,7 @@
         generateBtn.disabled = false;
 
         if (data.status === "success") {
-            imageResult.innerHTML = `
+            result.innerHTML = `
             <p>${data.message}</p>
             <audio controls>
             <source src="${data.audio_url}" type="audio/mpeg" >
@@ -81,7 +81,7 @@
         }
         
     } catch (error) {
-        alert("Failed to Generate Image ");
+        alert("Failed to Generate Audio ");
     }  
         
     });

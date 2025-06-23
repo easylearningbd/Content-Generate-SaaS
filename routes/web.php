@@ -200,7 +200,8 @@ Route::controller(HomeController::class)->group(function(){
 
 
   Route::controller(GenerateController::class)->group(function(){
-    Route::post('/generate-save-image', 'GenerateAndSaveImage');  
+    Route::post('/generate-save-image', 'GenerateAndSaveImage'); 
+    Route::post('/generate-audio', 'GenerateAndSaveAudio'); 
   });
 
 
