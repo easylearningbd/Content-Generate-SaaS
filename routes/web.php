@@ -66,6 +66,12 @@ Route::controller(CheckoutController::class)->group(function(){
    
   });
 
+   Route::controller(GenerateController::class)->group(function(){
+    Route::get('/user/generate/audio', 'UserGenerateAudio')->name('user.generate.audio'); 
+    Route::get('/user/all/generate/audio', 'UserAllGenerateAudio')->name('user.all.generate.audio'); 
+   
+  });
+
 
 
 });

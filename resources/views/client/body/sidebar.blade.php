@@ -61,7 +61,7 @@
                     <span class="nk-menu-text">Template</span>
                 </a>
             </li>
-
+ 
             <li class="nk-menu-item">
                 <a href="{{ route('user.document') }}" class="nk-menu-link">
                     <span class="nk-menu-icon">
@@ -87,6 +87,27 @@
             <li class="nk-menu-item">
                 <a href="{{ route('user.all.generate.image') }}" class="nk-menu-link">
                     <span class="nk-menu-text">All Generate Image  </span>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="nk-menu-item has-sub">
+        <a href="#" class="nk-menu-link nk-menu-toggle">
+            <span class="nk-menu-icon">
+                <em class="icon ni ni-folder-list"></em>
+            </span>
+            <span class="nk-menu-text">Generate Audio</span>
+        </a>
+        <ul class="nk-menu-sub">
+            <li class="nk-menu-item">
+                <a href="{{ route('user.generate.audio') }}" class="nk-menu-link">
+                    <span class="nk-menu-text">Generate Audio</span>
+                </a>
+            </li>
+            <li class="nk-menu-item">
+                <a href="{{ route('user.all.generate.audio') }}" class="nk-menu-link">
+                    <span class="nk-menu-text">All Generate Audio  </span>
                 </a>
             </li>
         </ul>

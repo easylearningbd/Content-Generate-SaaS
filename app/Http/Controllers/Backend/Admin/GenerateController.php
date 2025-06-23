@@ -146,6 +146,19 @@ class GenerateController extends Controller
     }
     // End Method
 
+     public function UserGenerateAudio(){
+        return view('client.backend.generate.generate_audio');
+    }
+    // End Method
+
+     public function UserAllGenerateAudio(){
+        $id = Auth::user()->id;
+        $genaudio = GeneratedAudio::where('user_id',$id)->orderBy('id','desc')->get();
+        return view('client.backend.generate.all_audio',compact('genaudio'));
+    }
+    // End Method
+
+
 
 
 }
