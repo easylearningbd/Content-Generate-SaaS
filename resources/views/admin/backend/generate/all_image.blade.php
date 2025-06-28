@@ -1,6 +1,9 @@
 @extends('admin.dashboard')
 @section('admin') 
 
+
+
+
 <div class="nk-content-inner">
 <div class="nk-content-body">
     <div class="nk-block-head nk-page-head">
